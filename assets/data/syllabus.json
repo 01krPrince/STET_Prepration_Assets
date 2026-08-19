@@ -1,0 +1,205 @@
+{
+  "examInfo": {
+    "examName": "Bihar STET 2026 - Paper 2 - Computer Science",
+    "conductingBody": "Bihar School Examination Board (BSEB)",
+    "notificationDate": "14 August 2026 (Advt. No. PR.183/2026)",
+    "applicationWindow": "17 August 2026 to 31 August 2026",
+    "subjectCodeNote": "IMPORTANT: Publicly available sources conflict on the Computer Science subject code. Older BSEB Paper-2 material (2023 exam papers) shows Computer Science as code 226, and a recent 2026 secondary-source summary also states 226. The code 207 you mentioned was not independently confirmed in research. Please verify your exact subject code from your own filled BSEB STET 2026 application form / admit card, since that is the only fully authoritative source. This app uses your syllabus content regardless of code number.",
+    "mode": "Computer Based Test (CBT), Online",
+    "paperLanguage": "Question paper is set in Hindi; this app's notes and questions are kept in English by your request.",
+    "duration": "150 minutes (2 hours 30 minutes)",
+    "totalQuestions": 150,
+    "totalMarks": 150,
+    "sectionA": {
+      "name": "Specified Subject - Computer Science",
+      "questions": 100,
+      "marks": 100
+    },
+    "sectionB": {
+      "name": "Teaching Art & Skills (common section)",
+      "questions": 50,
+      "marks": 50
+    },
+    "negativeMarking": "No negative marking (as per multiple 2025/2026 secondary sources). Not independently verified against the primary BSEB notification PDF - confirm from your official notification.",
+    "syllabusLevel": "Postgraduate-level Computer Science syllabus for the specified-subject section (per BSEB pattern for Paper II).",
+    "verificationStatus": "Not officially verified. This syllabus was compiled from multiple current (2025-2026) secondary/coaching sources that reference the BSEB pattern, since the original BSEB syllabus PDF could not be directly fetched in this environment. Cross-check unit list against your official notification PDF at bsebstet.org before final exam-day reliance.",
+    "examDate": "Not yet announced as of 17 August 2026."
+  },
+  "units": [
+    {
+      "id": "u1",
+      "title": "Digital Logic",
+      "priority": "HIGH PRIORITY",
+      "topics": [
+        "Number systems: Binary, Octal, Hexadecimal, BCD, ASCII, EBCDIC, Gray codes",
+        "Binary arithmetic, complements (1's and 2's), Boolean algebra, Venn diagrams",
+        "Logic gates: truth tables, SOP & POS forms, K-map simplification",
+        "Combinational circuits: Adder, Subtractor, Encoder, Decoder, Multiplexer, Comparator, Parity Generator",
+        "Memory systems: RAM, ROM, EPROM, EEPROM, PLDs & PLAs",
+        "Sequential circuits: Flip-Flops (SR, JK, D, T), Registers, Counters, State diagrams",
+        "A/D and D/A conversion, Logic families (TTL, ECL, MOS, CMOS)"
+      ]
+    },
+    {
+      "id": "u2",
+      "title": "Computer Organization & Architecture",
+      "priority": "HIGH PRIORITY",
+      "topics": [
+        "Number systems and conversions, Binary arithmetic",
+        "Error detection/correction codes (Parity, Checksum, Hamming code)",
+        "ASCII, EBCDIC, Gray code, BCD",
+        "CPU organisation, Addressing modes, RAM (SRAM, DRAM), ROM (PROM, EPROM, EEPROM)",
+        "Microprocessor & Microcontroller basics",
+        "Logic gates, K-map simplification, ALU design"
+      ]
+    },
+    {
+      "id": "u3",
+      "title": "Programming & Data Structures",
+      "priority": "MUST STUDY",
+      "topics": [
+        "Data types, Abstract data types, Algorithm design techniques",
+        "Arrays (1D, 2D, Sparse Matrices), Recursion & Backtracking",
+        "Linked lists: Single, Double, Circular, Polynomial operations",
+        "Stack: operations, applications (prefix/postfix evaluation)",
+        "Queue: Circular, Dequeue, Priority Queue",
+        "Searching: Linear, Binary, Hashing",
+        "Sorting: Insertion, Selection, Bubble, Heap, Counting, Bucket",
+        "Trees: Binary Trees, BST, AVL, B-Tree, Huffman Coding",
+        "Graphs: Representation, DFS, BFS"
+      ]
+    },
+    {
+      "id": "u4",
+      "title": "Algorithms",
+      "priority": "HIGH PRIORITY",
+      "topics": [
+        "Time & space complexity, Big-O notation, recurrence relations",
+        "Divide & Conquer: Binary search, Merge sort",
+        "Dynamic Programming basics",
+        "Graph algorithms (shortest path, MST basics)",
+        "NP-completeness (conceptual level only)"
+      ]
+    },
+    {
+      "id": "u5",
+      "title": "Operating System",
+      "priority": "MUST STUDY",
+      "topics": [
+        "Functions, structure, and types of OS",
+        "Process concept: states, scheduling algorithms, process synchronization",
+        "Deadlock: conditions, prevention, avoidance, detection",
+        "Memory management: Paging, Segmentation, Virtual memory",
+        "File system: organisation, allocation methods, directories, I/O management",
+        "Protection, security, and recovery basics"
+      ]
+    },
+    {
+      "id": "u6",
+      "title": "Database Management System",
+      "priority": "MUST STUDY",
+      "topics": [
+        "DBMS vs File system, Three-level (ANSI-SPARC) architecture",
+        "Relational model: keys, ER model, schema, relational algebra basics",
+        "Normalization: 1NF, 2NF, 3NF, BCNF",
+        "Transactions, concurrency control, locking protocols, two-phase commit"
+      ]
+    },
+    {
+      "id": "u7",
+      "title": "Computer Networks",
+      "priority": "HIGH PRIORITY",
+      "topics": [
+        "Network topologies, reference models (OSI, TCP/IP)",
+        "Data transmission, encoding, compression, transmission impairments",
+        "Data link layer: framing, flow control, error control",
+        "Network layer: routing, congestion control, IPv4, ARP",
+        "Transport & application layers: UDP, TCP, HTTP, FTP, SMTP"
+      ]
+    },
+    {
+      "id": "u8",
+      "title": "Software Engineering",
+      "priority": "MEDIUM PRIORITY",
+      "topics": [
+        "Characteristics of software, process models: Waterfall, Spiral, Prototype",
+        "Project estimation: LOC, Function Points, COCOMO",
+        "SRS documentation, structured & object-oriented design",
+        "Testing: Unit, System, Black-box, White-box",
+        "Software quality and maintenance basics"
+      ]
+    },
+    {
+      "id": "u9",
+      "title": "Object-Oriented Programming",
+      "priority": "HIGH PRIORITY",
+      "topics": [
+        "Classes, objects, encapsulation, inheritance, polymorphism",
+        "Constructors, destructors, abstract classes & methods",
+        "Exception handling basics"
+      ]
+    },
+    {
+      "id": "u10",
+      "title": "Web-Based Application Development",
+      "priority": "MEDIUM PRIORITY",
+      "topics": [
+        "Internet basics, HTML, CSS, JavaScript, jQuery fundamentals",
+        "Introductory Node.js, Git basics, PHP, MySQL integration",
+        "DOM, XML basics, Sessions, HTTP forms"
+      ]
+    },
+    {
+      "id": "u11",
+      "title": "Theory of Computation",
+      "priority": "MEDIUM PRIORITY",
+      "topics": [
+        "DFA, NFA, Regular expressions, Minimization of Finite Automata",
+        "Context-Free Grammar, CNF, GNF, Pushdown Automata",
+        "Turing Machines, Recursive languages, Halting problem (conceptual)"
+      ]
+    },
+    {
+      "id": "u12",
+      "title": "Internet of Things (IoT)",
+      "priority": "LOW PRIORITY",
+      "topics": [
+        "IoT architecture, Middleware, Protocols (Zigbee, Modbus, RFID)",
+        "Cloud & Mobile Computing basics in IoT context",
+        "Industrial IoT (IIoT), Security & Privacy basics"
+      ]
+    },
+    {
+      "id": "u13",
+      "title": "Artificial Intelligence",
+      "priority": "MEDIUM PRIORITY",
+      "topics": [
+        "Problem-solving, Search strategies (DFS, BFS, Hill Climbing)",
+        "Knowledge representation: Predicate logic, Frames, Rules",
+        "Inference: Forward & Backward chaining, Bayesian networks basics",
+        "Planning, Machine Learning basics, Expert Systems"
+      ]
+    },
+    {
+      "id": "u14",
+      "title": "Fundamentals of E-Commerce",
+      "priority": "LOW PRIORITY",
+      "topics": [
+        "E-commerce framework and applications",
+        "Internet infrastructure, Firewalls, Network security basics",
+        "Payment systems: Smart cards, Credit cards, Digital tokens",
+        "EDI, Digital libraries, Corporate data warehouses"
+      ]
+    },
+    {
+      "id": "u15",
+      "title": "Multimedia",
+      "priority": "LOW PRIORITY",
+      "topics": [
+        "Multimedia basics: Hardware, Software, Applications",
+        "Audio (MP3, MIDI), Graphics, Text, Animation, Video basics",
+        "Multimedia project design, Tools, and Future trends"
+      ]
+    }
+  ]
+}

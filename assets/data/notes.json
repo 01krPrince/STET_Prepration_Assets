@@ -1,0 +1,1201 @@
+[
+  {
+    "unitId": "u1",
+    "unitTitle": "Digital Logic",
+    "topicName": "Number Systems & Codes",
+    "definition": "A number system is a way of representing numbers using a set of symbols and rules; computers primarily use Binary (base 2), and also Octal (base 8) and Hexadecimal (base 16) as shorthand for binary.",
+    "coreConcept": "Every number system uses a 'base' (radix) that tells you how many symbols it has (Binary=2, Octal=8, Decimal=10, Hex=16). Codes like BCD, ASCII, EBCDIC and Gray code are just standardized ways of representing decimal digits, characters, or values in binary form for specific purposes.",
+    "importantPoints": [
+      "Binary uses digits 0-1, Octal uses 0-7, Hexadecimal uses 0-9 and A-F.",
+      "BCD (Binary Coded Decimal) represents each decimal digit separately using 4 bits (e.g., 25 in BCD = 0010 0101, NOT 11001).",
+      "Gray code changes only ONE bit between two successive values, which reduces errors in mechanical/rotary sensors.",
+      "ASCII is a 7-bit (128 characters) / extended 8-bit (256 characters) code for representing English text characters.",
+      "EBCDIC is an 8-bit character code, mainly used historically in IBM mainframe systems."
+    ],
+    "example": "Decimal 45 in Binary = 101101, in Octal = 55, in Hexadecimal = 2D, in BCD = 0100 0101 (4 and 5 separately).",
+    "importantFacts": [
+      "1 Hex digit = exactly 4 binary bits (nibble).",
+      "1 Octal digit = exactly 3 binary bits.",
+      "ASCII value of 'A' is 65, and 'a' is 97 - commonly asked fact."
+    ],
+    "commonConfusion": "Students often convert a decimal number to binary and call it BCD - remember, BCD converts EACH DIGIT separately, giving a different (usually longer) result than plain binary conversion.",
+    "quickRevision": [
+      "Binary=base2",
+      "Octal=base8",
+      "Hex=base16",
+      "BCD: digit-by-digit 4-bit encoding",
+      "Gray code: 1-bit change between consecutive values",
+      "ASCII: 7/8-bit character code"
+    ]
+  },
+  {
+    "unitId": "u1",
+    "unitTitle": "Digital Logic",
+    "topicName": "Boolean Algebra & Logic Gates",
+    "definition": "Boolean algebra is a mathematical system for representing and simplifying logical (true/false) expressions using variables that can only take values 0 or 1; logic gates are the physical/electronic implementation of these Boolean operations.",
+    "coreConcept": "The three fundamental gates are AND, OR, and NOT - all other gates (NAND, NOR, XOR, XNOR) can be derived from combinations of these. NAND and NOR are called 'universal gates' because either one alone can be used to build any other gate.",
+    "importantPoints": [
+      "AND gate output is 1 only when ALL inputs are 1.",
+      "OR gate output is 1 when AT LEAST ONE input is 1.",
+      "XOR (Exclusive OR) output is 1 only when inputs are DIFFERENT.",
+      "De Morgan's Laws: (A+B)' = A'.B' and (A.B)' = A'+B' — essential for simplifying expressions.",
+      "SOP (Sum of Products) and POS (Product of Sums) are two standard ways to write any Boolean expression.",
+      "K-map (Karnaugh Map) is a visual grid method to simplify Boolean expressions by grouping adjacent 1s in powers of 2 (1, 2, 4, 8...)."
+    ],
+    "example": "Simplify A.B + A.B' using Boolean algebra: A.B + A.B' = A.(B+B') = A.(1) = A.",
+    "importantFacts": [
+      "NAND = NOT + AND (bubble at output of AND).",
+      "A gate with a 'bubble' on its output means the output is inverted/complemented.",
+      "XOR is heavily used in binary addition (half-adder) and parity checking."
+    ],
+    "commonConfusion": "Students confuse SOP with POS: SOP is written as sums (OR) of product (AND) terms like AB + A'C; POS is products (AND) of sum (OR) terms like (A+B).(A'+C).",
+    "quickRevision": [
+      "AND: all 1s->1",
+      "OR: any 1->1",
+      "NAND/NOR: universal gates",
+      "XOR: differing inputs->1",
+      "De Morgan's law flips AND<->OR and complements variables",
+      "K-map groups must be in powers of 2"
+    ]
+  },
+  {
+    "unitId": "u1",
+    "unitTitle": "Digital Logic",
+    "topicName": "Combinational Circuits",
+    "definition": "Combinational circuits are digital circuits whose output depends ONLY on the current combination of inputs, with no memory of past inputs (no feedback, no clock needed).",
+    "coreConcept": "Common combinational building blocks include Adders/Subtractors (arithmetic), Encoders/Decoders (code conversion), Multiplexers/Demultiplexers (data routing/selection), and Comparators (comparing binary values).",
+    "importantPoints": [
+      "Half Adder adds 2 single bits and produces Sum and Carry, but cannot handle an input carry.",
+      "Full Adder adds 3 bits (two operands + carry-in) and produces Sum and Carry-out, so full adders can be chained for multi-bit addition.",
+      "A Decoder converts n binary input lines into up to 2^n unique output lines (e.g., 2-to-4 decoder).",
+      "An Encoder does the OPPOSITE of a decoder: it converts 2^n input lines into n binary output lines.",
+      "A Multiplexer (MUX) selects ONE of many inputs and routes it to a single output, based on select lines.",
+      "A Demultiplexer (DEMUX) takes ONE input and routes it to ONE of many outputs, based on select lines."
+    ],
+    "example": "A 4-to-1 MUX needs 2 select lines (since 2^2 = 4) to choose among 4 input lines.",
+    "importantFacts": [
+      "Parity generators add an extra bit to make the total number of 1s even (even parity) or odd (odd parity) for basic error detection.",
+      "A comparator circuit outputs whether A>B, A=B, or A<B for two binary numbers."
+    ],
+    "commonConfusion": "Encoder and Decoder are often mixed up: Decoder = FEW inputs to MANY outputs (1-to-many activation); Encoder = MANY inputs to FEW outputs (compresses/encodes which line is active).",
+    "quickRevision": [
+      "Half adder: 2 inputs, no carry-in",
+      "Full adder: 3 inputs, has carry-in",
+      "Decoder: n->2^n lines",
+      "Encoder: 2^n->n lines",
+      "MUX: many->one (select lines pick source)",
+      "DEMUX: one->many"
+    ]
+  },
+  {
+    "unitId": "u1",
+    "unitTitle": "Digital Logic",
+    "topicName": "Sequential Circuits & Memory",
+    "definition": "Sequential circuits are digital circuits whose output depends on both current inputs AND the circuit's previous state (they have memory), typically built using flip-flops and controlled by a clock signal.",
+    "coreConcept": "A flip-flop is the basic 1-bit memory element. Common types are SR (Set-Reset), JK (fixes SR's invalid state), D (Data/Delay - simplest, widely used), and T (Toggle). Registers are groups of flip-flops storing multi-bit data; counters are registers that step through a sequence of states.",
+    "importantPoints": [
+      "SR flip-flop has an invalid/forbidden state when S=1 and R=1 simultaneously.",
+      "JK flip-flop resolves this: when J=1,K=1, the output simply toggles (no invalid state).",
+      "D flip-flop output simply follows the D input at the clock edge - used to avoid the SR race condition, widely used in registers.",
+      "T flip-flop toggles its output every clock pulse when T=1 - commonly used in counters.",
+      "RAM (Random Access Memory) is volatile (loses data when powered off); ROM (Read Only Memory) is non-volatile.",
+      "EEPROM can be erased and reprogrammed electrically (byte by byte), unlike EPROM which needs UV light and full-chip erasure."
+    ],
+    "example": "A 4-bit binary counter built from T flip-flops can count from 0000 to 1111 (0 to 15) and then rolls over back to 0000.",
+    "importantFacts": [
+      "PLDs (Programmable Logic Devices) and PLAs (Programmable Logic Arrays) let engineers configure custom digital logic without designing a new chip from scratch.",
+      "A/D converters turn analog (continuous) signals into digital (binary) values; D/A converters do the reverse."
+    ],
+    "commonConfusion": "Combinational vs Sequential: if a circuit needs a clock signal and can 'remember' past states (like a counter or register), it's sequential; if the output depends only on current inputs (like a MUX or adder), it's combinational.",
+    "quickRevision": [
+      "Flip-flop = 1-bit memory",
+      "SR: invalid state at S=R=1",
+      "JK: fixes SR's flaw, toggles at J=K=1",
+      "D flip-flop: output follows input",
+      "T flip-flop: toggles output",
+      "RAM=volatile, ROM=non-volatile",
+      "EEPROM: electrically erasable"
+    ]
+  },
+  {
+    "unitId": "u2",
+    "unitTitle": "Computer Organization & Architecture",
+    "topicName": "CPU Organisation & Addressing Modes",
+    "definition": "CPU organisation describes the internal structure of the Central Processing Unit (registers, ALU, control unit) and how it executes instructions; addressing modes define the different ways an instruction can specify the location of its operand data.",
+    "coreConcept": "The CPU has key registers: Program Counter (PC) - next instruction's address, Instruction Register (IR) - currently executing instruction, Accumulator - holds intermediate results, and Memory Address/Data Registers (MAR/MDR) for talking to memory.",
+    "importantPoints": [
+      "Immediate addressing: operand VALUE is directly in the instruction (fastest, no memory access needed).",
+      "Direct addressing: instruction contains the actual memory ADDRESS of the operand.",
+      "Indirect addressing: instruction contains the address of a location that itself holds the operand's address (an extra level of pointer lookup).",
+      "Register addressing: operand is inside a CPU register (very fast since no memory access at all).",
+      "The Instruction Cycle = Fetch -> Decode -> Execute (repeated for every instruction)."
+    ],
+    "example": "If instruction says 'ADD #5' (immediate mode), the CPU just adds the literal value 5. If it says 'ADD 200' (direct mode), the CPU goes to memory address 200, fetches the value stored there, and adds it.",
+    "importantFacts": [
+      "Pipelining overlaps the fetch/decode/execute stages of multiple instructions to improve throughput.",
+      "The Control Unit directs and coordinates all CPU operations but does not perform calculations itself (that's the ALU's job)."
+    ],
+    "commonConfusion": "Direct vs Indirect addressing: Direct = instruction holds the actual address of data. Indirect = instruction holds the address of a location that CONTAINS the address of the data (one extra hop).",
+    "quickRevision": [
+      "PC: next instruction address",
+      "IR: current instruction",
+      "Immediate: value in instruction itself",
+      "Direct: address in instruction",
+      "Indirect: address-of-address in instruction",
+      "Register mode: fastest, data in CPU register"
+    ]
+  },
+  {
+    "unitId": "u2",
+    "unitTitle": "Computer Organization & Architecture",
+    "topicName": "Memory Hierarchy & Error Codes",
+    "definition": "Memory hierarchy arranges different memory types by speed, cost, and size - from fastest/smallest/costliest (registers, cache) to slowest/largest/cheapest (secondary storage) - to balance performance and cost.",
+    "coreConcept": "Error detection/correction codes add redundant bits to data so errors introduced during storage or transmission can be detected (and sometimes corrected) at the receiving end.",
+    "importantPoints": [
+      "Memory hierarchy order (fastest to slowest): Registers > Cache > Main Memory (RAM) > Secondary Storage (HDD/SSD).",
+      "SRAM (Static RAM) is faster and used for cache; DRAM (Dynamic RAM) is cheaper, denser, used for main memory, but needs periodic refreshing.",
+      "A simple Parity bit can only DETECT a single-bit error, it cannot correct it or reliably detect an even number of errors.",
+      "A Checksum is a calculated value (like a sum) sent along with data; the receiver recalculates it to check for errors.",
+      "Hamming Code adds multiple parity bits at specific positions, enabling both detection AND correction of single-bit errors."
+    ],
+    "example": "In an 8-bit even-parity scheme, if the data has an odd number of 1s, the parity bit is set to 1 to make the total count of 1s even.",
+    "importantFacts": [
+      "Cache memory works on the 'principle of locality' - programs tend to access the same or nearby memory locations repeatedly.",
+      "ROM subtypes: PROM (programmed once), EPROM (UV-erasable), EEPROM (electrically erasable, byte-level)."
+    ],
+    "commonConfusion": "Parity bit detects but cannot correct errors; Hamming code can both detect AND correct single-bit errors because of its extra, carefully positioned redundant bits.",
+    "quickRevision": [
+      "Hierarchy: Register>Cache>RAM>Disk",
+      "SRAM: fast, no refresh, cache",
+      "DRAM: cheap, needs refresh, main memory",
+      "Parity: detect only",
+      "Checksum: detect only, block-level",
+      "Hamming code: detect + correct single-bit error"
+    ]
+  },
+  {
+    "unitId": "u2",
+    "unitTitle": "Computer Organization & Architecture",
+    "topicName": "Microprocessors & ALU",
+    "definition": "A microprocessor is a single IC chip containing the CPU's core logic (control unit + ALU); a microcontroller additionally integrates RAM, ROM, and I/O ports on the same chip, making it self-contained for embedded applications.",
+    "coreConcept": "The Arithmetic Logic Unit (ALU) is the CPU component that performs all arithmetic operations (add, subtract, multiply) and logical/bitwise operations (AND, OR, NOT, comparisons).",
+    "importantPoints": [
+      "Microprocessor = needs external RAM/ROM/I/O chips; used in general-purpose computers (PCs).",
+      "Microcontroller = all-in-one chip (CPU+RAM+ROM+I/O); used in embedded systems (washing machines, remote controls, IoT devices).",
+      "ALU takes operand inputs from registers, performs the operation, and stores the result back (often via the accumulator).",
+      "The Control Unit generates timing and control signals that tell the ALU, registers, and memory what to do and when."
+    ],
+    "example": "An Arduino board uses a microcontroller (like ATmega328) which already has built-in memory and I/O pins, unlike a desktop PC's microprocessor which relies on separate RAM sticks and a separate motherboard chipset for I/O.",
+    "importantFacts": [
+      "Clock speed (measured in GHz) indicates how many basic cycles the CPU can perform per second, though it isn't the only factor in real-world performance.",
+      "Bus width (e.g., 32-bit vs 64-bit) affects how much data/address space the processor can handle at once."
+    ],
+    "commonConfusion": "Students sometimes think microcontroller = smaller/weaker microprocessor. The real distinction is integration: a microcontroller is a complete mini-computer on one chip, purpose-built for embedded control, not raw computing power.",
+    "quickRevision": [
+      "Microprocessor: CPU only, needs external RAM/ROM/I/O",
+      "Microcontroller: CPU+RAM+ROM+I/O on one chip",
+      "ALU: arithmetic + logic operations",
+      "Control Unit: generates control signals, doesn't compute"
+    ]
+  },
+  {
+    "unitId": "u3",
+    "unitTitle": "Programming & Data Structures",
+    "topicName": "Arrays & Recursion",
+    "definition": "An array is a fixed-size, contiguous collection of elements of the same data type, accessed using an index; recursion is a technique where a function calls itself to solve smaller instances of the same problem.",
+    "coreConcept": "Arrays give O(1) constant-time random access via index arithmetic (base address + index*size) but have a fixed size decided at creation and costly insertion/deletion (requires shifting). Recursion requires a base case (stopping condition) and a recursive case that moves toward the base case.",
+    "importantPoints": [
+      "1D array: simple linear list; 2D array: matrix/table (rows and columns), accessed as arr[i][j].",
+      "A Sparse Matrix is a matrix where most elements are zero; it is often stored more efficiently using a triplet representation (row, column, value) instead of the full 2D array.",
+      "Every recursive function needs a BASE CASE, or it results in infinite recursion and a stack overflow.",
+      "Recursion uses the call stack internally - each recursive call adds a new stack frame.",
+      "Backtracking is a refinement of recursion/brute-force where invalid partial solutions are abandoned ('backtracked') as soon as they're found not to work (e.g., N-Queens problem)."
+    ],
+    "example": "Factorial function: fact(n) = n * fact(n-1), with base case fact(0) = 1. fact(4) = 4*3*2*1*1 = 24.",
+    "importantFacts": [
+      "Array elements are stored in contiguous memory locations, which is what enables fast O(1) indexed access.",
+      "Recursive solutions are often more readable than iterative ones but can be less memory-efficient due to call-stack overhead."
+    ],
+    "commonConfusion": "Students often forget that array size is fixed at declaration (in languages like C/Java arrays) - resizing requires creating a new array and copying elements, unlike dynamic structures like linked lists.",
+    "quickRevision": [
+      "Array: O(1) access, fixed size, contiguous memory",
+      "2D array: matrix, row-major/column-major storage",
+      "Sparse matrix: mostly zeros, stored as (row,col,value) triplets",
+      "Recursion needs a base case",
+      "Backtracking: recursion + abandon invalid paths early"
+    ]
+  },
+  {
+    "unitId": "u3",
+    "unitTitle": "Programming & Data Structures",
+    "topicName": "Linked Lists",
+    "definition": "A linked list is a linear data structure where each element (node) contains data and a pointer/reference to the next node, allowing dynamic memory allocation without needing contiguous storage.",
+    "coreConcept": "Unlike arrays, linked lists grow/shrink dynamically and allow O(1) insertion/deletion once you have a reference to the right position, but they sacrifice random access (must traverse from the head to reach a given position, making access O(n)).",
+    "importantPoints": [
+      "Singly Linked List: each node points only to the NEXT node; traversal is one-directional.",
+      "Doubly Linked List: each node points to both NEXT and PREVIOUS nodes, allowing two-directional traversal at the cost of extra memory per node.",
+      "Circular Linked List: the last node points back to the first node (instead of NULL), useful for round-robin style applications.",
+      "A Polynomial can be represented as a linked list where each node stores a coefficient and exponent, making polynomial addition/multiplication straightforward by traversing and combining like terms."
+    ],
+    "example": "A singly linked list 10 -> 20 -> 30 -> NULL: to reach 30, you must first visit 10, then 20, then 30 (sequential access only).",
+    "importantFacts": [
+      "Insertion at the head of a singly linked list is O(1); insertion at an arbitrary known position is also O(1) once you have the pointer.",
+      "Linked lists use extra memory per element (for storing pointers) compared to arrays."
+    ],
+    "commonConfusion": "Students sometimes think linked lists are always 'better' than arrays - in reality, arrays are better when you need fast random access (like binary search), while linked lists are better for frequent insertions/deletions at arbitrary positions.",
+    "quickRevision": [
+      "Singly: one pointer (next)",
+      "Doubly: two pointers (next+prev)",
+      "Circular: last node points to first",
+      "Access = O(n), Insertion/Deletion (at known node) = O(1)",
+      "Polynomial: node = coefficient+exponent"
+    ]
+  },
+  {
+    "unitId": "u3",
+    "unitTitle": "Programming & Data Structures",
+    "topicName": "Stacks & Queues",
+    "definition": "A Stack is a linear data structure following LIFO (Last-In-First-Out); a Queue is a linear data structure following FIFO (First-In-First-Out).",
+    "coreConcept": "Stacks support push (insert) and pop (remove) operations only at one end (the 'top'). Queues support enqueue (insert at rear) and dequeue (remove from front) at two different ends.",
+    "importantPoints": [
+      "Stack applications: function call management (call stack), expression evaluation (postfix/prefix), undo operations, balanced parentheses checking, DFS traversal.",
+      "Postfix expression evaluation: scan left to right, push operands, and when an operator is found, pop the required operands, compute, and push the result back.",
+      "Circular Queue reuses freed space at the front once the rear wraps around, avoiding the wasted space problem of a simple linear queue.",
+      "Deque (Double-Ended Queue) allows insertion and deletion from BOTH the front and rear.",
+      "Priority Queue serves elements based on priority rather than pure insertion order - typically implemented using a heap."
+    ],
+    "example": "Postfix expression '5 3 + 2 *' is evaluated as: push 5, push 3, see '+' -> pop 3,5 -> compute 5+3=8 -> push 8, push 2, see '*' -> pop 2,8 -> compute 8*2=16. Result = 16.",
+    "importantFacts": [
+      "Stack Overflow occurs when you try to push onto a full stack; Stack Underflow occurs when you try to pop from an empty stack.",
+      "BFS uses a Queue; DFS uses a Stack (or recursion, which implicitly uses the call stack)."
+    ],
+    "commonConfusion": "Stack (LIFO) vs Queue (FIFO) is a classic exam trap - remember: Stack = plate stacking (top plate removed first); Queue = ticket line (first person in line served first).",
+    "quickRevision": [
+      "Stack: LIFO, push/pop at top",
+      "Queue: FIFO, enqueue at rear/dequeue at front",
+      "Postfix eval: push operands, compute on operator",
+      "Circular queue: reuses freed space",
+      "Priority queue: served by priority, uses heap"
+    ]
+  },
+  {
+    "unitId": "u3",
+    "unitTitle": "Programming & Data Structures",
+    "topicName": "Searching & Sorting",
+    "definition": "Searching algorithms locate a target value within a data structure; sorting algorithms arrange elements of a list into a specific order (ascending/descending).",
+    "coreConcept": "Linear search checks every element sequentially (works on any list, O(n)); Binary search only works on SORTED data but is much faster (O(log n)) by repeatedly halving the search range. Sorting algorithms vary in time complexity, stability, and whether they sort 'in-place'.",
+    "importantPoints": [
+      "Linear Search: O(n) time, works on unsorted or sorted data.",
+      "Binary Search: O(log n) time, REQUIRES sorted data.",
+      "Hashing: maps keys to array indices using a hash function for near O(1) average search time, but can suffer from collisions.",
+      "Bubble/Selection/Insertion Sort: simple, O(n^2) worst case, good for small or nearly-sorted data.",
+      "Heap Sort: O(n log n), uses a binary heap, NOT stable.",
+      "Counting Sort and Bucket Sort: non-comparison-based sorts that can achieve O(n) time under specific conditions (limited range of values)."
+    ],
+    "example": "Searching for 23 in the sorted array [4,8,15,16,23,42] using binary search: check middle (16) -> 23>16, search right half [23,42] -> check middle -> found.",
+    "importantFacts": [
+      "A 'stable' sort preserves the relative order of equal elements (e.g., Bubble Sort, Insertion Sort, Merge Sort are stable; Quick Sort and Heap Sort typically are not).",
+      "Hashing collisions are commonly resolved using chaining (linked lists at each bucket) or open addressing (probing for the next free slot)."
+    ],
+    "commonConfusion": "Students forget binary search's precondition of a SORTED array - applying it to unsorted data gives incorrect/undefined results.",
+    "quickRevision": [
+      "Linear search: O(n), any order",
+      "Binary search: O(log n), sorted only",
+      "Hashing: ~O(1) average, collisions possible",
+      "Bubble/Insertion/Selection: O(n^2), simple",
+      "Heap sort: O(n log n), not stable",
+      "Stable sort: keeps equal elements' relative order"
+    ]
+  },
+  {
+    "unitId": "u3",
+    "unitTitle": "Programming & Data Structures",
+    "topicName": "Trees & Graphs",
+    "definition": "A Tree is a hierarchical, non-linear data structure with a root node and child nodes forming a parent-child relationship with no cycles; a Graph is a more general non-linear structure of vertices (nodes) connected by edges, which CAN have cycles.",
+    "coreConcept": "Binary Trees restrict each node to at most 2 children. A Binary Search Tree (BST) additionally orders nodes so left-subtree values < node < right-subtree values, enabling fast search. Graphs can be traversed using BFS (queue-based, level order) or DFS (stack/recursion-based, depth order).",
+    "importantPoints": [
+      "BST: left subtree < node < right subtree - enables O(log n) average search/insert/delete (O(n) worst case if unbalanced).",
+      "AVL Tree: a self-balancing BST where the balance factor (height difference between left and right subtrees) is kept within {-1, 0, +1} using rotations.",
+      "B-Tree: a balanced multi-way search tree, commonly used in databases and file systems because it minimizes disk reads.",
+      "Huffman Coding builds an optimal binary tree for data compression, giving shorter codes to frequent characters.",
+      "Graphs can be represented using an Adjacency Matrix (2D array, easy edge lookup, O(V^2) space) or Adjacency List (list per vertex, space-efficient for sparse graphs).",
+      "DFS explores as deep as possible before backtracking; BFS explores level by level and finds the shortest path in an unweighted graph."
+    ],
+    "example": "In BST insertion of [50, 30, 70, 20, 40]: 50 becomes root; 30 goes left of 50; 70 goes right of 50; 20 goes left of 30; 40 goes right of 30.",
+    "importantFacts": [
+      "A tree with n nodes always has exactly n-1 edges.",
+      "A complete binary tree (used for heaps) has all levels full except possibly the last, which fills left to right."
+    ],
+    "commonConfusion": "Tree vs Graph: a tree is technically a special type of graph that is connected, acyclic (no loops), and has exactly one path between any two nodes; a general graph can have cycles and multiple paths between nodes.",
+    "quickRevision": [
+      "Tree: hierarchical, no cycles",
+      "BST: left<node<right",
+      "AVL: self-balancing, balance factor in {-1,0,1}",
+      "B-tree: used in databases/file systems",
+      "DFS: stack/recursion, goes deep first",
+      "BFS: queue, level-by-level, shortest path in unweighted graphs"
+    ]
+  },
+  {
+    "unitId": "u4",
+    "unitTitle": "Algorithms",
+    "topicName": "Complexity Analysis",
+    "definition": "Time complexity measures how the running time of an algorithm grows as input size (n) increases; space complexity measures how memory usage grows with input size. Both are typically expressed using Big-O notation, describing worst-case growth rate.",
+    "coreConcept": "Big-O notation ignores constant factors and lower-order terms, focusing on how the algorithm scales for LARGE inputs. Common complexity classes, from fastest to slowest growth: O(1) < O(log n) < O(n) < O(n log n) < O(n^2) < O(2^n).",
+    "importantPoints": [
+      "O(1): constant time - e.g., accessing an array element by index.",
+      "O(log n): logarithmic - e.g., binary search.",
+      "O(n): linear - e.g., linear search, single loop through n elements.",
+      "O(n log n): e.g., Merge Sort, Heap Sort, Quick Sort (average case).",
+      "O(n^2): quadratic - e.g., Bubble Sort, nested loops both running n times.",
+      "A recurrence relation expresses an algorithm's running time in terms of its running time on smaller inputs, e.g., T(n) = 2T(n/2) + O(n) for Merge Sort."
+    ],
+    "example": "A single loop from 1 to n is O(n). Two nested loops each from 1 to n give O(n^2). A loop that halves the range each time (like binary search) gives O(log n).",
+    "importantFacts": [
+      "Best case, average case, and worst case complexities can differ for the same algorithm (e.g., Quick Sort is O(n log n) average but O(n^2) worst case).",
+      "Space complexity includes both the input itself and any 'auxiliary' extra space the algorithm uses."
+    ],
+    "commonConfusion": "Big-O describes an UPPER BOUND (worst case growth), which students sometimes mistake for meaning 'the exact running time' - it's actually about the algorithm's growth trend as n gets large, not a precise timing.",
+    "quickRevision": [
+      "O(1)<O(log n)<O(n)<O(n log n)<O(n^2)<O(2^n)",
+      "Nested loop (n x n) = O(n^2)",
+      "Halving each step = O(log n)",
+      "Recurrence relation: T(n) in terms of T(smaller n)"
+    ]
+  },
+  {
+    "unitId": "u4",
+    "unitTitle": "Algorithms",
+    "topicName": "Algorithm Design Techniques",
+    "definition": "Algorithm design techniques are general strategies used to construct efficient algorithms for a wide class of problems, rather than solving each problem from scratch.",
+    "coreConcept": "Divide & Conquer breaks a problem into independent subproblems, solves them (often recursively), and combines the results. Dynamic Programming also breaks problems into subproblems, but specifically REUSES results of overlapping subproblems (via memoization/tabulation) to avoid recomputation. Greedy algorithms make the locally optimal choice at each step, hoping it leads to a global optimum.",
+    "importantPoints": [
+      "Divide & Conquer examples: Merge Sort, Quick Sort, Binary Search.",
+      "Dynamic Programming examples: Fibonacci with memoization, Knapsack problem, shortest path (Floyd-Warshall).",
+      "Greedy examples: Kruskal's/Prim's Minimum Spanning Tree, Dijkstra's shortest path (with non-negative weights).",
+      "Backtracking systematically tries partial solutions and abandons ('backtracks') as soon as a partial solution can't lead to a valid full solution (e.g., N-Queens, Sudoku solvers).",
+      "NP-Complete problems are believed to have NO known polynomial-time solution; if you can solve one efficiently, you can solve ALL NP problems efficiently (this is an open question in computer science - P vs NP)."
+    ],
+    "example": "For the Fibonacci sequence, plain recursion recomputes the same values many times (exponential time); Dynamic Programming stores already-computed Fibonacci values, reducing this to linear time.",
+    "importantFacts": [
+      "The key difference between Divide & Conquer and DP is overlapping subproblems: D&C subproblems are usually independent (no overlap), while DP subproblems DO overlap and benefit from caching.",
+      "Greedy algorithms are fast but don't always guarantee the globally optimal solution for every problem type."
+    ],
+    "commonConfusion": "Greedy vs Dynamic Programming: Greedy makes an irreversible locally-best choice at each step and never looks back; DP considers multiple options and combines optimal results from subproblems, guaranteeing a global optimum for well-structured problems.",
+    "quickRevision": [
+      "Divide & Conquer: independent subproblems (Merge Sort, Binary Search)",
+      "DP: overlapping subproblems + memoization (Fibonacci, Knapsack)",
+      "Greedy: locally optimal choice (Dijkstra, Kruskal's)",
+      "Backtracking: try + undo invalid paths",
+      "NP-Complete: no known polynomial solution"
+    ]
+  },
+  {
+    "unitId": "u5",
+    "unitTitle": "Operating System",
+    "topicName": "Process Management & Scheduling",
+    "definition": "A process is a program in execution; process management involves creating, scheduling, and terminating processes, while CPU scheduling decides which ready process gets the CPU next.",
+    "coreConcept": "A process moves through states: New -> Ready -> Running -> (Waiting if it needs I/O) -> Ready again -> Terminated. Scheduling algorithms decide the order in which ready processes get CPU time, balancing fairness, throughput, and response time.",
+    "importantPoints": [
+      "FCFS (First-Come-First-Served): simple, non-preemptive, but can cause the 'convoy effect' (short processes wait behind long ones).",
+      "SJF (Shortest Job First): minimizes average waiting time, but can cause starvation for long processes.",
+      "Round Robin: each process gets a fixed time quantum; fair, prevents starvation, but too-small a quantum increases overhead from frequent context switching.",
+      "Priority Scheduling: processes with higher priority run first; needs 'aging' to prevent starvation of low-priority processes.",
+      "Context Switching: the overhead of saving one process's state and loading another's - happens whenever the CPU switches which process it's running."
+    ],
+    "example": "With FCFS and processes arriving in order P1(burst=5), P2(burst=3), P3(burst=1): they run strictly as P1, then P2, then P3, regardless of burst time.",
+    "importantFacts": [
+      "Non-preemptive scheduling: once a process starts, it runs to completion or until it blocks (e.g., basic FCFS, SJF).",
+      "Preemptive scheduling: a running process can be interrupted and moved back to Ready if a higher-priority process arrives (e.g., Round Robin, Preemptive SJF)."
+    ],
+    "commonConfusion": "Process vs Program: A program is a passive set of instructions stored on disk; a process is an ACTIVE instance of a program currently being executed, with its own memory, registers, and state.",
+    "quickRevision": [
+      "Process states: New->Ready->Running->Waiting->Terminated",
+      "FCFS: simple, convoy effect",
+      "SJF: optimal avg wait, starvation risk",
+      "Round Robin: time quantum, fair, prevents starvation",
+      "Context switch: save+restore process state"
+    ]
+  },
+  {
+    "unitId": "u5",
+    "unitTitle": "Operating System",
+    "topicName": "Synchronization & Deadlock",
+    "definition": "Process synchronization coordinates multiple processes/threads accessing shared resources to avoid inconsistent results; a deadlock is a state where two or more processes are permanently blocked, each waiting for a resource held by another.",
+    "coreConcept": "Synchronization tools like semaphores and mutex locks control access to shared/critical resources. Deadlock requires FOUR conditions to occur simultaneously - if even one is prevented, deadlock cannot occur.",
+    "importantPoints": [
+      "The four necessary conditions for deadlock: Mutual Exclusion, Hold and Wait, No Preemption, and Circular Wait.",
+      "A Semaphore is an integer variable with atomic wait() (P, decrement) and signal() (V, increment) operations, used to control access to shared resources.",
+      "A Mutex (mutual exclusion lock) is a simpler binary lock (locked/unlocked) typically owned by the process that locked it.",
+      "Deadlock Prevention: design the system so at least one of the four conditions can never hold.",
+      "Deadlock Avoidance: use algorithms like the Banker's Algorithm to only grant resource requests that keep the system in a 'safe state'.",
+      "Deadlock Detection & Recovery: allow deadlock to occur, then detect it (via resource allocation graphs) and recover (e.g., by killing/rolling back a process)."
+    ],
+    "example": "Process A holds Resource 1 and waits for Resource 2; Process B holds Resource 2 and waits for Resource 1 - this circular wait creates a deadlock.",
+    "importantFacts": [
+      "The 'Critical Section' is the part of code where a process accesses shared resources; synchronization ensures only one process is in its critical section for a shared resource at a time.",
+      "Starvation is different from deadlock: in starvation, a process is repeatedly denied resources (but isn't necessarily permanently blocked, unlike deadlock)."
+    ],
+    "commonConfusion": "Deadlock vs Starvation: Deadlock is a permanent, circular blocking situation with NO progress possible for the involved processes; Starvation means a process keeps getting delayed/skipped but the SYSTEM overall is still making progress for other processes.",
+    "quickRevision": [
+      "4 deadlock conditions: Mutual exclusion, Hold&Wait, No preemption, Circular wait",
+      "Semaphore: wait()/signal(), controls shared access",
+      "Banker's Algorithm: deadlock AVOIDANCE via safe-state check",
+      "Deadlock detection: resource allocation graph + recovery"
+    ]
+  },
+  {
+    "unitId": "u5",
+    "unitTitle": "Operating System",
+    "topicName": "Memory Management",
+    "definition": "Memory management is the OS function of controlling and coordinating main memory (RAM), tracking which parts are in use, and allocating/deallocating memory as processes need it.",
+    "coreConcept": "Paging divides memory into fixed-size blocks (pages/frames), eliminating external fragmentation but potentially causing internal fragmentation. Segmentation divides a program into logically meaningful variable-sized segments (code, data, stack), which is more intuitive but can suffer external fragmentation. Virtual memory extends usable memory using disk space.",
+    "importantPoints": [
+      "Paging: fixed-size pages (logical) map to fixed-size frames (physical) - avoids external fragmentation but can waste some space within the last page (internal fragmentation).",
+      "Segmentation: variable-sized logical segments (e.g., code segment, data segment) - matches how programmers think, but can suffer external fragmentation over time.",
+      "Virtual Memory: allows programs to use more memory than physically available RAM by swapping pages between RAM and disk (paging file/swap space).",
+      "A Page Fault occurs when a program accesses a page that is not currently loaded in RAM - the OS must fetch it from disk.",
+      "Thrashing: when the system spends more time swapping pages than executing actual processes, due to overcommitted memory."
+    ],
+    "example": "If a process needs 4.5 KB and the page size is 4KB, it will be allocated 2 full pages (8KB), wasting 3.5KB - this wasted space within the last allocated page is internal fragmentation.",
+    "importantFacts": [
+      "The Page Table maps logical (virtual) page numbers to physical frame numbers.",
+      "LRU (Least Recently Used) is a common page replacement algorithm that removes the page that hasn't been used for the longest time when a new page needs to be loaded."
+    ],
+    "commonConfusion": "Internal vs External Fragmentation: Internal = wasted space INSIDE an allocated fixed-size block (common in paging); External = wasted space BETWEEN allocated blocks scattered across memory (common in segmentation/contiguous allocation).",
+    "quickRevision": [
+      "Paging: fixed-size, avoids external fragmentation, may cause internal fragmentation",
+      "Segmentation: variable-size logical units, may cause external fragmentation",
+      "Virtual memory: disk extends RAM via swapping",
+      "Page fault: needed page not in RAM",
+      "Thrashing: excessive swapping, low CPU utilization"
+    ]
+  },
+  {
+    "unitId": "u5",
+    "unitTitle": "Operating System",
+    "topicName": "File Systems",
+    "definition": "A file system is the OS component that organizes, names, stores, and retrieves data (files) on secondary storage devices, and manages the directory structure.",
+    "coreConcept": "File allocation methods determine how a file's data blocks are physically arranged on disk: Contiguous (all blocks together), Linked (blocks scattered, connected via pointers), and Indexed (a separate index block lists all data block locations).",
+    "importantPoints": [
+      "Contiguous Allocation: fast sequential AND random access, but suffers from external fragmentation and requires knowing file size in advance.",
+      "Linked Allocation: no external fragmentation, easy to grow files, but slow random access (must follow pointers from the start) and extra space needed for pointers.",
+      "Indexed Allocation: uses a separate index block holding pointers to all the file's data blocks - supports efficient direct/random access without the contiguous allocation's fragmentation problem.",
+      "Directory structures organize files hierarchically (like folders/subfolders in a tree structure).",
+      "I/O management in the OS handles communication between the CPU and peripheral devices (disks, printers, keyboards) via device drivers."
+    ],
+    "example": "A hard-disk defragmentation tool exists specifically because contiguous or near-contiguous allocation gets fragmented over time as files are created, resized, and deleted.",
+    "importantFacts": [
+      "File protection uses access control lists or permission bits (read/write/execute) to restrict unauthorized access.",
+      "Recovery mechanisms like journaling file systems log changes before applying them, to allow recovery after a crash."
+    ],
+    "commonConfusion": "Students often think Linked Allocation is always worse than Indexed - Linked allocation actually needs LESS overhead for small files but is much slower for random access, since Indexed allocation adds one extra index-block lookup but then gives direct access to any block.",
+    "quickRevision": [
+      "Contiguous: fast access, external fragmentation risk",
+      "Linked: no external fragmentation, slow random access",
+      "Indexed: index block lists all data blocks, supports random access",
+      "Directory: hierarchical (tree) file organisation"
+    ]
+  },
+  {
+    "unitId": "u6",
+    "unitTitle": "Database Management System",
+    "topicName": "DBMS Basics & Architecture",
+    "definition": "A DBMS (Database Management System) is software that lets users define, create, maintain, and control access to a database, replacing older file-based data storage systems.",
+    "coreConcept": "The three-level ANSI-SPARC architecture separates HOW users see data (External level), the overall LOGICAL structure of all data (Conceptual level), and HOW data is physically stored (Internal level), providing data independence.",
+    "importantPoints": [
+      "DBMS advantages over file systems: reduced data redundancy, better data integrity, controlled concurrent access, centralized backup/recovery, and enforced security.",
+      "External Level: individual user views (what each user/application sees).",
+      "Conceptual Level: the complete logical structure of the whole database, independent of physical storage.",
+      "Internal (Physical) Level: how data is actually stored on disk - file structures, indexes, storage allocation.",
+      "Data Independence: changes at one level should not require changes at levels above it (Logical Data Independence = conceptual changes don't affect external views; Physical Data Independence = internal storage changes don't affect conceptual level)."
+    ],
+    "example": "A university database's conceptual schema defines Student, Course, Enrollment tables; a Registrar's external view might show only enrollment counts, while a Professor's view shows only their own course's students.",
+    "importantFacts": [
+      "A Database Administrator (DBA) is responsible for the overall control, security, and maintenance of the database.",
+      "DDL (Data Definition Language, e.g., CREATE, ALTER) defines the schema; DML (Data Manipulation Language, e.g., SELECT, INSERT, UPDATE, DELETE) manipulates the actual data."
+    ],
+    "commonConfusion": "Students confuse the Conceptual and Internal levels - Conceptual describes WHAT data exists and its relationships (logical structure); Internal describes HOW that data is physically stored on disk (files, indexes, blocks).",
+    "quickRevision": [
+      "3 levels: External (user views), Conceptual (logical), Internal (physical)",
+      "DBMS reduces redundancy vs file systems",
+      "DDL defines schema, DML manipulates data",
+      "Data independence: isolates layers from each other's changes"
+    ]
+  },
+  {
+    "unitId": "u6",
+    "unitTitle": "Database Management System",
+    "topicName": "ER Model & Keys",
+    "definition": "The Entity-Relationship (ER) Model is a conceptual design tool that represents real-world data as entities (things), attributes (properties), and relationships (associations) between entities; keys are attribute(s) used to uniquely identify records.",
+    "coreConcept": "ER diagrams use standardized shapes: rectangles for entities, ovals for attributes, and diamonds for relationships. Different key types serve different purposes in ensuring data uniqueness and enabling relationships between tables.",
+    "importantPoints": [
+      "Entity: a real-world object/concept (e.g., Student, Course) - represented as a rectangle.",
+      "Attribute: a property of an entity (e.g., Student Name, Roll Number) - represented as an oval.",
+      "Relationship: an association between two or more entities (e.g., Student 'enrolls in' Course) - represented as a diamond.",
+      "Candidate Key: any minimal attribute set that could uniquely identify a row; a table can have multiple candidate keys.",
+      "Primary Key: the ONE candidate key chosen to uniquely identify rows; cannot be NULL.",
+      "Foreign Key: an attribute in one table that references the Primary Key of another (or the same) table, enforcing referential integrity.",
+      "Composite Key: a primary key made up of TWO OR MORE attributes together (neither alone is unique)."
+    ],
+    "example": "In a Students table, both 'Roll Number' and 'Email' could be candidate keys (both unique); if 'Roll Number' is chosen as the Primary Key, 'Email' remains an alternate/candidate key.",
+    "importantFacts": [
+      "Cardinality in ER models describes relationship types: One-to-One, One-to-Many, or Many-to-Many.",
+      "A weak entity depends on another (strong) entity for its identification, since it lacks a sufficient primary key of its own."
+    ],
+    "commonConfusion": "Candidate Key vs Primary Key: EVERY candidate key COULD be a primary key, but only ONE is chosen as the actual primary key of the table; the others remain candidate/alternate keys.",
+    "quickRevision": [
+      "Entity=rectangle, Attribute=oval, Relationship=diamond",
+      "Candidate key: any unique-identifying set",
+      "Primary key: the chosen candidate key, no NULLs",
+      "Foreign key: links to another table's primary key",
+      "Composite key: multiple attributes together form the key"
+    ]
+  },
+  {
+    "unitId": "u6",
+    "unitTitle": "Database Management System",
+    "topicName": "Normalization",
+    "definition": "Normalization is the systematic process of organizing database tables to minimize data redundancy and avoid update/insert/delete anomalies, done by progressively applying stricter 'normal form' rules.",
+    "coreConcept": "Each normal form builds on the previous one by eliminating a specific type of undesirable dependency: 1NF removes repeating groups, 2NF removes partial dependency, 3NF removes transitive dependency, and BCNF further tightens the rule for determinants.",
+    "importantPoints": [
+      "1NF: all attribute values must be atomic (indivisible); no repeating groups or multi-valued attributes in a single column.",
+      "2NF: must be in 1NF, and every non-key attribute must depend on the WHOLE primary key (no partial dependency) - relevant only for composite keys.",
+      "3NF: must be in 2NF, and no non-key attribute should depend on another non-key attribute (no transitive dependency) - every non-key attribute must depend ONLY on the primary key.",
+      "BCNF: must be in 3NF, and for every functional dependency X->Y, X must be a candidate key (super key) - handles some edge cases 3NF misses.",
+      "Functional Dependency (X->Y): means the value of X determines the value of Y (Y depends functionally on X)."
+    ],
+    "example": "A table with (StudentID, CourseID, CourseName) where CourseName depends only on CourseID (not the full key StudentID+CourseID) has a PARTIAL dependency - violates 2NF. Splitting into (StudentID,CourseID) and (CourseID,CourseName) tables fixes this.",
+    "importantFacts": [
+      "Normalization trades off some query performance (more JOINs needed) for reduced redundancy and better data integrity.",
+      "Denormalization is the intentional reverse process, sometimes used for performance optimization in read-heavy systems."
+    ],
+    "commonConfusion": "2NF's partial dependency rule ONLY applies when the primary key is composite (made of multiple attributes) - if a table has a single-attribute primary key, it automatically satisfies 2NF once it's in 1NF.",
+    "quickRevision": [
+      "1NF: atomic values, no repeating groups",
+      "2NF: 1NF + no partial dependency (composite key issue)",
+      "3NF: 2NF + no transitive dependency",
+      "BCNF: 3NF + every determinant is a candidate key",
+      "Functional Dependency: X->Y means X determines Y"
+    ]
+  },
+  {
+    "unitId": "u6",
+    "unitTitle": "Database Management System",
+    "topicName": "Transactions & Concurrency",
+    "definition": "A transaction is a logical unit of database work (a sequence of operations) that must be executed completely or not at all; concurrency control manages simultaneous transactions to prevent conflicts and maintain data consistency.",
+    "coreConcept": "The ACID properties guarantee reliable transaction processing. Locking protocols like Two-Phase Locking (2PL) coordinate concurrent access to ensure a 'serializable' outcome - as if transactions ran one after another, even though they actually overlap in time.",
+    "importantPoints": [
+      "Atomicity: a transaction's operations either ALL complete successfully or NONE do (all-or-nothing).",
+      "Consistency: a transaction takes the database from one valid state to another valid state, preserving all defined rules/constraints.",
+      "Isolation: concurrent transactions should not interfere with each other, as if executed serially (one at a time).",
+      "Durability: once a transaction commits, its changes are permanent, even if the system crashes immediately after.",
+      "Two-Phase Locking (2PL): a transaction acquires ALL needed locks first (growing phase), then releases them (shrinking phase) - once it starts releasing locks, it cannot acquire any new ones.",
+      "Two-Phase Commit protocol coordinates commit/abort decisions across multiple distributed database sites so they all agree together."
+    ],
+    "example": "A bank transfer transaction (debit Account A, credit Account B) must be Atomic: if the credit to B fails after the debit from A succeeds, the ENTIRE transaction must be rolled back so A's money isn't lost.",
+    "importantFacts": [
+      "A deadlock can occur in concurrent transaction processing too, similar to OS deadlocks, when transactions wait on locks held by each other.",
+      "Isolation levels (Read Uncommitted, Read Committed, Repeatable Read, Serializable) offer different trade-offs between consistency and performance."
+    ],
+    "commonConfusion": "Consistency (in ACID) vs Isolation are often confused: Consistency ensures the DATABASE RULES/constraints are preserved before and after a transaction; Isolation ensures CONCURRENT transactions don't see each other's incomplete/intermediate changes.",
+    "quickRevision": [
+      "ACID: Atomicity, Consistency, Isolation, Durability",
+      "2PL: acquire-all-then-release-all locking, ensures serializability",
+      "Two-Phase Commit: coordinates distributed transaction commit/abort",
+      "Transaction deadlock: similar to OS deadlock, resolved by rollback/abort"
+    ]
+  },
+  {
+    "unitId": "u7",
+    "unitTitle": "Computer Networks",
+    "topicName": "Network Basics & OSI/TCP-IP Model",
+    "definition": "Computer networks connect devices to share data and resources; the OSI (7-layer) and TCP/IP (4-layer) models are standardized frameworks describing how network communication is layered and organized.",
+    "coreConcept": "Each OSI layer has a specific responsibility and communicates with the corresponding layer on the receiving device. Data is encapsulated (wrapped with headers) as it moves down the layers at the sender, and decapsulated (headers stripped) as it moves up at the receiver.",
+    "importantPoints": [
+      "OSI 7 layers (top to bottom): Application, Presentation, Session, Transport, Network, Data Link, Physical - mnemonic: 'All People Seem To Need Data Processing'.",
+      "TCP/IP 4 layers: Application, Transport, Internet, Network Access (combines/simplifies several OSI layers).",
+      "Physical layer: raw bit transmission over the physical medium (cables, radio).",
+      "Data Link layer: framing, MAC addressing, error/flow control on a single local link.",
+      "Network layer: logical addressing (IP) and routing across multiple networks.",
+      "Transport layer: end-to-end delivery, using TCP (reliable) or UDP (fast, unreliable)."
+    ],
+    "example": "When you send a webpage request, the Application layer generates an HTTP request, which gets wrapped with a TCP header (Transport), then an IP header (Network), then a frame header (Data Link), before being sent as bits (Physical).",
+    "importantFacts": [
+      "Topologies: Star (central hub, easy fault isolation), Bus (single shared cable, cheap but one failure can affect all), Ring (each device connects to two neighbours, data flows in one direction), Mesh (every device connects to every other, highly redundant)."
+    ],
+    "commonConfusion": "OSI has 7 layers (theoretical/reference model) while TCP/IP has 4 layers (the model actually implemented on the internet) - questions sometimes ask you to map OSI layers to their TCP/IP equivalents.",
+    "quickRevision": [
+      "OSI: 7 layers (Physical to Application)",
+      "TCP/IP: 4 layers (Network Access to Application)",
+      "Encapsulation: headers added going down the stack",
+      "Star topology: central hub, easy isolation",
+      "Ring topology: unidirectional, neighbor-to-neighbor"
+    ]
+  },
+  {
+    "unitId": "u7",
+    "unitTitle": "Computer Networks",
+    "topicName": "Data Link Layer",
+    "definition": "The Data Link layer is responsible for reliable node-to-node data transfer over a single physical link, handling framing, physical (MAC) addressing, and error/flow control.",
+    "coreConcept": "Framing packages raw bits into structured units (frames) that the receiver can identify and process. Flow control prevents a fast sender from overwhelming a slow receiver, while error control detects (and sometimes corrects) transmission errors.",
+    "importantPoints": [
+      "Framing methods include character/byte counting, byte stuffing (special flag bytes marking frame boundaries), and bit stuffing.",
+      "Flow control techniques: Stop-and-Wait (send one frame, wait for ACK before sending next) and Sliding Window (allow multiple frames in transit before requiring acknowledgment).",
+      "Error control commonly uses CRC (Cyclic Redundancy Check) - a more powerful error-detection code than simple parity, widely used in network hardware.",
+      "CSMA/CD (Carrier Sense Multiple Access / Collision Detection): used in traditional Ethernet - devices listen before transmitting and detect/handle collisions.",
+      "MAC (Media Access Control) address: a unique physical hardware address assigned to network interface cards (NICs)."
+    ],
+    "example": "In Stop-and-Wait flow control, if Sender transmits Frame 1 and doesn't receive an ACK within a timeout period, it retransmits Frame 1, assuming it was lost or corrupted.",
+    "importantFacts": [
+      "Ethernet frames include a MAC source address, MAC destination address, and CRC field for error checking.",
+      "Sliding Window protocols significantly improve throughput over Stop-and-Wait by allowing multiple unacknowledged frames in transit."
+    ],
+    "commonConfusion": "Flow control vs Error control: Flow control manages the SPEED/rate of data transmission (matching sender/receiver speeds); Error control detects and handles CORRUPTED or LOST data - they solve different problems, though both operate at the Data Link layer.",
+    "quickRevision": [
+      "Framing: breaks bit stream into frames",
+      "Flow control: Stop-and-Wait, Sliding Window",
+      "Error control: CRC (common), parity (simple)",
+      "CSMA/CD: Ethernet collision handling",
+      "MAC address: unique NIC hardware address"
+    ]
+  },
+  {
+    "unitId": "u7",
+    "unitTitle": "Computer Networks",
+    "topicName": "Network Layer",
+    "definition": "The Network layer is responsible for logical addressing (IP addresses) and routing data packets across multiple interconnected networks from source to destination.",
+    "coreConcept": "IPv4 addresses uniquely identify devices on a network using a 32-bit address, traditionally divided into classes (A, B, C, D, E). Routing algorithms determine the best path for packets to travel across networks, and congestion control prevents network overload.",
+    "importantPoints": [
+      "IPv4 address = 32 bits, written as 4 decimal octets (e.g., 192.168.1.1).",
+      "Class A: first bit 0, large networks (8 bits network, 24 bits host). Class B: first 2 bits 10 (16 bits network, 16 bits host). Class C: first 3 bits 110 (24 bits network, 8 bits host) - smaller networks.",
+      "ARP (Address Resolution Protocol): resolves a known IP address to its corresponding MAC address on the local network.",
+      "Routing: the process of selecting a path for packets across networks - can be static (manually configured) or dynamic (routing protocols adapt automatically).",
+      "Congestion Control: mechanisms to prevent too much traffic from overwhelming network links/routers, e.g., by limiting the sending rate."
+    ],
+    "example": "When Device A wants to send data to Device B on the same LAN, it uses ARP to find B's MAC address corresponding to B's known IP address, before it can actually address the Ethernet frame.",
+    "importantFacts": [
+      "A router operates primarily at the Network layer, using IP addresses to forward packets between different networks.",
+      "IPv4 address exhaustion is a key reason IPv6 (128-bit addresses) was developed."
+    ],
+    "commonConfusion": "IP address vs MAC address: IP address is a LOGICAL address that can change (assigned by network/DHCP) and is used for routing ACROSS networks; MAC address is a PHYSICAL, mostly fixed hardware address used for delivery WITHIN a local network segment.",
+    "quickRevision": [
+      "IPv4: 32-bit address, 4 octets",
+      "Class A/B/C: differ in network vs host bit split",
+      "ARP: IP address -> MAC address",
+      "Routing: path selection across networks",
+      "Router: operates at Network layer using IP addresses"
+    ]
+  },
+  {
+    "unitId": "u7",
+    "unitTitle": "Computer Networks",
+    "topicName": "Transport & Application Layer",
+    "definition": "The Transport layer provides end-to-end communication services between applications on different hosts (via TCP or UDP); the Application layer provides the actual network services/protocols that end-user software directly interacts with.",
+    "coreConcept": "TCP guarantees reliable, ordered, connection-oriented delivery (with handshaking and acknowledgments), while UDP is a simpler, connectionless, faster protocol with no delivery guarantees - suited for applications like video streaming where speed matters more than perfect reliability.",
+    "importantPoints": [
+      "TCP: connection-oriented (3-way handshake), reliable, ordered delivery, used for web browsing, email, file transfer.",
+      "UDP: connectionless, no guarantee of delivery/order, lower overhead, used for DNS queries, video streaming, online gaming.",
+      "HTTP (port 80) / HTTPS (port 443): used for web page transfer.",
+      "FTP (ports 20/21): used for file transfer between computers.",
+      "SMTP (port 25): used for sending email between mail servers.",
+      "DNS (port 53): resolves domain names to IP addresses."
+    ],
+    "example": "Streaming a live video uses UDP because a few dropped/lost packets (causing a brief glitch) are more acceptable than the delay caused by TCP's retransmission and ordering guarantees.",
+    "importantFacts": [
+      "TCP's 3-way handshake: SYN -> SYN-ACK -> ACK, establishes a connection before data transfer begins.",
+      "Port numbers identify specific applications/services on a host; well-known ports (0-1023) are reserved for standard services."
+    ],
+    "commonConfusion": "Students sometimes think UDP is 'worse' than TCP in all cases - UDP is intentionally simpler/faster and is the RIGHT CHOICE for real-time applications where speed matters more than guaranteed delivery of every single packet.",
+    "quickRevision": [
+      "TCP: reliable, connection-oriented, ordered",
+      "UDP: fast, connectionless, no guarantees",
+      "HTTP:80, HTTPS:443, FTP:20/21, SMTP:25, DNS:53",
+      "3-way handshake: SYN, SYN-ACK, ACK"
+    ]
+  },
+  {
+    "unitId": "u8",
+    "unitTitle": "Software Engineering",
+    "topicName": "Process Models",
+    "definition": "A software process model is a structured approach/framework describing the phases and workflow followed to develop software, from requirement gathering to deployment and maintenance.",
+    "coreConcept": "Different process models suit different project situations: Waterfall works well when requirements are clear and stable upfront; Spiral and Prototype models suit projects with evolving or unclear requirements, using iteration and risk analysis or early feedback.",
+    "importantPoints": [
+      "Waterfall Model: strictly sequential phases (Requirements -> Design -> Implementation -> Testing -> Deployment -> Maintenance); simple but inflexible to changing requirements.",
+      "Spiral Model: combines iterative development with explicit RISK ANALYSIS at each spiral/loop; suited for large, high-risk projects.",
+      "Prototype Model: builds a quick working sample early to gather user feedback before full development, useful when requirements are unclear.",
+      "Agile methodologies (generally referenced) emphasize iterative, incremental development with frequent customer collaboration - contrast with Waterfall's rigid, plan-driven approach."
+    ],
+    "example": "A government payroll system with fixed, well-documented requirements might use the Waterfall model; a new mobile app startup with evolving user needs might prefer an iterative/prototype-based approach.",
+    "importantFacts": [
+      "In Waterfall, going back to a previous phase (e.g., discovering a requirements issue during testing) is difficult and costly - this rigidity is its main drawback.",
+      "The Spiral model's 4 quadrants typically are: Planning, Risk Analysis, Engineering, and Evaluation, repeated in each loop."
+    ],
+    "commonConfusion": "Spiral vs Prototype: Spiral model's DEFINING feature is its formal risk analysis phase in every cycle; Prototype model's defining feature is building an early, tangible sample for USER FEEDBACK, not primarily for risk management.",
+    "quickRevision": [
+      "Waterfall: strict sequential phases, no going back easily",
+      "Spiral: iterative + risk analysis each loop",
+      "Prototype: early sample for user feedback",
+      "Choose model based on how clear/stable requirements are"
+    ]
+  },
+  {
+    "unitId": "u8",
+    "unitTitle": "Software Engineering",
+    "topicName": "Estimation & SRS",
+    "definition": "Software project estimation predicts the effort, cost, and time needed to develop software; an SRS (Software Requirements Specification) document formally captures what the system must do.",
+    "coreConcept": "COCOMO (Constructive Cost Model) uses estimated project size (in KLOC - thousands of lines of code) along with project type (organic, semi-detached, embedded) to estimate effort and development time using empirically-derived formulas.",
+    "importantPoints": [
+      "LOC (Lines of Code): simple size metric, but can be inconsistent across programming languages and coding styles.",
+      "Function Points (FP): measures software size based on FUNCTIONALITY delivered to the user (inputs, outputs, inquiries, files, interfaces), independent of programming language.",
+      "COCOMO: uses KLOC-based formulas to estimate effort (person-months) and development time.",
+      "SRS document typically includes: functional requirements (what the system does), non-functional requirements (performance, security, usability), and constraints.",
+      "Structured design (function-oriented, e.g., Data Flow Diagrams) vs Object-Oriented design (class-oriented, e.g., UML diagrams) are two major design approaches following requirements analysis."
+    ],
+    "example": "If a project is estimated at 10,000 lines of code (10 KLOC) and is of 'organic' type in COCOMO, a formula like Effort = a*(KLOC)^b (with model-specific constants a, b) gives an estimated effort in person-months.",
+    "importantFacts": [
+      "A well-written SRS should be unambiguous, complete, consistent, verifiable, and traceable.",
+      "Function Points are considered more consistent than LOC because they measure functionality, not raw code volume, which varies by language/style."
+    ],
+    "commonConfusion": "LOC vs Function Points: LOC counts actual CODE LINES (language-dependent, can be gamed by verbose coding); Function Points measure delivered FUNCTIONALITY from a user's perspective (language-independent), generally considered more objective for cross-project comparison.",
+    "quickRevision": [
+      "COCOMO: KLOC-based effort/time estimation",
+      "LOC: simple, language-dependent size metric",
+      "Function Points: functionality-based, language-independent",
+      "SRS: functional + non-functional requirements document"
+    ]
+  },
+  {
+    "unitId": "u8",
+    "unitTitle": "Software Engineering",
+    "topicName": "Testing & Maintenance",
+    "definition": "Software testing verifies that a program behaves as expected and finds defects before release; software maintenance refers to modifying software after delivery to fix issues, adapt to changes, or improve it.",
+    "coreConcept": "Testing can be approached from the outside (Black-box, based on requirements/specifications) or the inside (White-box, based on internal code structure). Maintenance is categorized by WHY the change is being made.",
+    "importantPoints": [
+      "Black-box Testing: tests functionality based on inputs/outputs, WITHOUT looking at internal code (e.g., testing if a login form correctly rejects wrong passwords).",
+      "White-box Testing: tests internal code paths/logic/structure directly (needs source code access) - e.g., checking that every branch of an if-else is executed.",
+      "Unit Testing: tests individual components/modules in isolation.",
+      "System Testing: tests the COMPLETE integrated system against overall requirements.",
+      "Corrective Maintenance: fixing bugs/defects found after release.",
+      "Adaptive Maintenance: modifying software to work in a new environment (e.g., new OS version).",
+      "Perfective Maintenance: adding new features or improving performance based on user feedback.",
+      "Preventive Maintenance: modifying software to prevent FUTURE problems (e.g., refactoring for maintainability)."
+    ],
+    "example": "Testing an ATM's login screen by only entering various card/PIN combinations and checking results (without seeing the code) is Black-box testing; checking that a specific loop inside the code executes the correct number of times is White-box testing.",
+    "importantFacts": [
+      "Testing levels typically progress: Unit Testing -> Integration Testing -> System Testing -> Acceptance Testing.",
+      "Regression Testing re-runs existing tests after a code change to make sure nothing that previously worked has broken."
+    ],
+    "commonConfusion": "The 4 types of maintenance (Corrective, Adaptive, Perfective, Preventive) are commonly tested by scenario - remember: Corrective=fixing bugs, Adaptive=adjusting to new environment, Perfective=adding/improving features, Preventive=proactive future-proofing.",
+    "quickRevision": [
+      "Black-box: tests behaviour, no code knowledge needed",
+      "White-box: tests internal logic/structure, needs code access",
+      "Unit->Integration->System->Acceptance testing order",
+      "Maintenance types: Corrective, Adaptive, Perfective, Preventive"
+    ]
+  },
+  {
+    "unitId": "u9",
+    "unitTitle": "Object-Oriented Programming",
+    "topicName": "Core OOP Concepts",
+    "definition": "Object-Oriented Programming (OOP) is a programming paradigm organized around 'objects' (instances of classes) that bundle together data (attributes) and behaviour (methods), built on four core pillars: Encapsulation, Abstraction, Inheritance, and Polymorphism.",
+    "coreConcept": "Encapsulation hides an object's internal data, exposing only necessary interfaces. Inheritance lets a class reuse and extend another class's properties/methods. Polymorphism allows the SAME interface/method name to behave differently depending on the object or arguments involved.",
+    "importantPoints": [
+      "Class: a blueprint/template defining attributes and methods; Object: a specific instance created from a class.",
+      "Encapsulation: bundling data + methods together, restricting direct external access to internal state (using private/protected access modifiers).",
+      "Inheritance types: Single (one parent), Multiple (multiple parents), Multilevel (chain: grandparent->parent->child), Hierarchical (one parent, multiple children), Hybrid (combination).",
+      "Polymorphism types: Compile-time/Static (Method Overloading - same name, different parameters) and Run-time/Dynamic (Method Overriding - subclass redefines parent's method).",
+      "Abstraction: exposing only essential features/behaviour while hiding implementation complexity - achieved via abstract classes or interfaces."
+    ],
+    "example": "A 'Vehicle' class might be inherited by 'Car' and 'Bike' subclasses (Hierarchical inheritance); both might override a 'move()' method inherited from Vehicle to give their own specific behaviour (Polymorphism via overriding).",
+    "importantFacts": [
+      "Encapsulation is often implemented using 'getter' and 'setter' methods to control access to private data.",
+      "'this'/'self' keyword typically refers to the current object instance within a class's methods."
+    ],
+    "commonConfusion": "Overloading vs Overriding: Overloading = SAME class, same method name, DIFFERENT parameter lists (compile-time decision); Overriding = subclass provides a NEW implementation for a method it INHERITED from its parent, with the SAME signature (run-time decision).",
+    "quickRevision": [
+      "Encapsulation: bundle+hide data",
+      "Inheritance: reuse parent class code",
+      "Polymorphism: overloading (compile-time) vs overriding (run-time)",
+      "Abstraction: hide implementation, expose essentials",
+      "Class=blueprint, Object=instance"
+    ]
+  },
+  {
+    "unitId": "u9",
+    "unitTitle": "Object-Oriented Programming",
+    "topicName": "Constructors, Destructors & Exception Handling",
+    "definition": "A constructor initializes a newly created object; a destructor cleans up when an object is destroyed; exception handling is a mechanism to gracefully detect and respond to runtime errors without crashing the program.",
+    "coreConcept": "Constructors are automatically invoked at object creation and often have the same name as the class (in languages like Java/C++); exception handling uses try-catch-finally blocks to separate normal code from error-handling code.",
+    "importantPoints": [
+      "A constructor has the SAME NAME as its class and NO return type (not even void).",
+      "A default constructor takes no parameters; a parameterized constructor accepts arguments to initialize specific values.",
+      "A destructor (e.g., ~ClassName() in C++) is called automatically when an object goes out of scope or is deleted, used to release resources.",
+      "try block: contains code that might throw an exception.",
+      "catch block: contains code to handle a specific type of exception if one is thrown in the try block.",
+      "finally block: contains code that runs REGARDLESS of whether an exception occurred - often used for cleanup (closing files/connections)."
+    ],
+    "example": "Opening a file inside a try block, catching a 'FileNotFoundException' in a catch block if the file doesn't exist, and closing the file handle in a finally block regardless of success or failure.",
+    "importantFacts": [
+      "Constructor overloading is allowed: a class can have multiple constructors with different parameter lists.",
+      "Not all languages have explicit destructors (e.g., Java uses automatic garbage collection instead of manual destructors like C++)."
+    ],
+    "commonConfusion": "Students sometimes think exception handling PREVENTS errors from happening - it does not prevent errors, it gracefully MANAGES/RESPONDS to errors that do occur, so the program can continue or fail safely instead of crashing abruptly.",
+    "quickRevision": [
+      "Constructor: same name as class, no return type, runs on object creation",
+      "Destructor: runs on object destruction, releases resources",
+      "try: risky code",
+      "catch: handles specific exception",
+      "finally: always runs (cleanup)"
+    ]
+  },
+  {
+    "unitId": "u10",
+    "unitTitle": "Web-Based Application Development",
+    "topicName": "Front-End Basics",
+    "definition": "Front-end web development involves building the client-side (browser-facing) part of a website using HTML (structure), CSS (styling), and JavaScript (behaviour/interactivity).",
+    "coreConcept": "The DOM (Document Object Model) represents the web page as a tree structure that JavaScript can read and modify dynamically, enabling interactive behaviour without reloading the page.",
+    "importantPoints": [
+      "HTML (HyperText Markup Language): defines the STRUCTURE and content of a web page using tags/elements.",
+      "CSS (Cascading Style Sheets): controls the VISUAL PRESENTATION (colors, layout, fonts) of HTML elements.",
+      "JavaScript: a client-side scripting language that adds INTERACTIVITY and dynamic behaviour to web pages.",
+      "jQuery: a JavaScript library that simplifies DOM manipulation, event handling, and AJAX calls with shorter syntax.",
+      "DOM: represents the HTML document as a tree of node objects that scripts can traverse and manipulate."
+    ],
+    "example": "Clicking a 'Show More' button that reveals hidden text without reloading the page is typically implemented using JavaScript to modify the DOM (e.g., changing a CSS display property).",
+    "importantFacts": [
+      "'Cascading' in CSS refers to how style rules from multiple sources (browser default, external stylesheet, inline styles) are combined, with specific rules for which takes priority.",
+      "Modern web development also commonly uses frameworks (React, Angular, Vue) built on top of core JavaScript, though the syllabus-level focus is on HTML/CSS/JS/jQuery fundamentals."
+    ],
+    "commonConfusion": "HTML vs CSS: HTML defines WHAT content exists and its structure (headings, paragraphs, images); CSS defines HOW that content looks (colors, spacing, fonts) - they work together but serve fundamentally different purposes.",
+    "quickRevision": [
+      "HTML: structure/content",
+      "CSS: styling/presentation",
+      "JavaScript: client-side interactivity",
+      "jQuery: JS library, simplifies DOM manipulation",
+      "DOM: tree representation of the page, scriptable"
+    ]
+  },
+  {
+    "unitId": "u10",
+    "unitTitle": "Web-Based Application Development",
+    "topicName": "Server-Side & Tools",
+    "definition": "Server-side web development handles the backend logic, data processing, and database interaction, running on the web server before content is sent to the client's browser.",
+    "coreConcept": "PHP and Node.js are common server-side technologies that process requests, interact with databases (like MySQL), and generate dynamic responses. Sessions maintain user-specific state across the stateless HTTP protocol, and Git tracks source code changes over time.",
+    "importantPoints": [
+      "PHP: a server-side scripting language, commonly paired with MySQL, that generates dynamic HTML output before sending it to the browser.",
+      "Node.js: allows JavaScript to run on the SERVER side (outside the browser), commonly used to build backend APIs.",
+      "MySQL: a popular open-source relational database management system, frequently used with PHP/Node.js web applications.",
+      "HTTP is stateless (each request is independent); Sessions and Cookies are used to maintain state (like login status) across multiple requests.",
+      "Git: a distributed version control system that tracks changes to source code, enabling collaboration, branching, and rollback to previous versions.",
+      "HTTP Forms: allow users to submit data (via GET or POST methods) from a web page to a server for processing."
+    ],
+    "example": "A login system might use PHP to check submitted credentials against a MySQL database, then create a SESSION so the user stays logged in as they navigate to different pages.",
+    "importantFacts": [
+      "A Cookie is stored on the CLIENT's browser; Session data is typically stored on the SERVER, with only a session ID stored in a cookie on the client.",
+      "Git commands like commit, push, pull, and branch are fundamental to collaborative software development workflows."
+    ],
+    "commonConfusion": "Cookie vs Session: A Cookie is small data stored directly in the user's BROWSER (client-side); a Session stores data on the SERVER, with the browser only holding a session identifier (usually via a cookie) to reference that server-side data.",
+    "quickRevision": [
+      "PHP/Node.js: server-side processing",
+      "MySQL: relational DB, common web pairing",
+      "Session: server-side state, identified via client cookie",
+      "Git: version control system for source code",
+      "HTTP: stateless, forms send data via GET/POST"
+    ]
+  },
+  {
+    "unitId": "u11",
+    "unitTitle": "Theory of Computation",
+    "topicName": "Finite Automata & Regular Expressions",
+    "definition": "A Finite Automaton (FA) is an abstract mathematical machine with a finite number of states used to recognize patterns (regular languages); a Regular Expression is a compact algebraic notation describing the same class of patterns.",
+    "coreConcept": "DFA (Deterministic FA) has exactly ONE transition per input symbol per state (no ambiguity); NFA (Non-deterministic FA) may have MULTIPLE (or zero) possible transitions for a symbol, including epsilon (empty) transitions. Despite this difference, DFA and NFA are equally powerful (recognize the same class of languages - regular languages).",
+    "importantPoints": [
+      "DFA: deterministic - for each state and input symbol, there is EXACTLY ONE next state.",
+      "NFA: non-deterministic - can have MULTIPLE possible next states (or none) for a given state/symbol, and can include epsilon transitions.",
+      "Every NFA can be converted to an equivalent DFA (though the DFA may have more states) - this is the Subset Construction algorithm.",
+      "Minimization of a DFA reduces it to the smallest equivalent DFA (fewest states) that recognizes the exact same language.",
+      "A Regular Expression describes a Regular Language, and every regular expression can be converted into an equivalent FA (and vice versa)."
+    ],
+    "example": "The regular expression a*b describes any string with zero or more 'a's followed by exactly one 'b' (like 'b', 'ab', 'aab', 'aaab').",
+    "importantFacts": [
+      "Regular languages are the simplest class in the Chomsky hierarchy, recognized by finite automata.",
+      "Common regex operators: * (zero or more), + (one or more), | (alternation/OR), . (concatenation, often implicit)."
+    ],
+    "commonConfusion": "Students think NFAs are 'more powerful' than DFAs because they allow multiple paths - but they are EQUALLY powerful in terms of what languages they can recognize; NFAs are just a more flexible/compact way to DESCRIBE the same regular languages.",
+    "quickRevision": [
+      "DFA: exactly one transition per state+symbol",
+      "NFA: multiple/zero transitions allowed, epsilon moves possible",
+      "DFA and NFA recognize the same class: Regular Languages",
+      "Regex <-> FA: interconvertible, both describe regular languages"
+    ]
+  },
+  {
+    "unitId": "u11",
+    "unitTitle": "Theory of Computation",
+    "topicName": "Context-Free Grammar & PDA",
+    "definition": "A Context-Free Grammar (CFG) is a set of production rules used to generate strings of a Context-Free Language; a Pushdown Automaton (PDA) is a finite automaton extended with an unbounded stack, which is exactly the machine model that recognizes context-free languages.",
+    "coreConcept": "CFGs are more powerful than regular expressions/FAs because they can express nested/recursive structures (like matched parentheses or programming language syntax), which is exactly what the PDA's extra stack memory enables it to recognize.",
+    "importantPoints": [
+      "A CFG production rule has the form A -> alpha, where A is a single non-terminal symbol and alpha is a string of terminals and/or non-terminals.",
+      "CNF (Chomsky Normal Form): a CFG where every production is either A -> BC (two non-terminals) or A -> a (single terminal).",
+      "GNF (Greibach Normal Form): a CFG where every production starts with a terminal symbol, optionally followed by non-terminals.",
+      "A PDA has all the components of a Finite Automaton PLUS a stack for extra memory, which lets it 'remember' nesting depth (useful for balanced parentheses, programming language syntax).",
+      "Context-Free Languages are exactly the languages that a PDA can accept - this equivalence is a fundamental result in Theory of Computation."
+    ],
+    "example": "The language of balanced parentheses (like '(()())') is context-free (needs a CFG/PDA) but NOT regular, because a simple FA cannot 'count' unlimited nesting depth without extra memory - a PDA's stack solves this by pushing on '(' and popping on ')'.",
+    "importantFacts": [
+      "Programming language syntax (like matching braces {} in code) is typically parsed using context-free grammars.",
+      "Every regular language is also context-free (CFGs are strictly more powerful/general than regular expressions)."
+    ],
+    "commonConfusion": "Students confuse CNF and GNF - CNF restricts productions to exactly TWO non-terminals or ONE terminal; GNF restricts productions to START with a terminal - both are 'normal forms' used to simplify grammar analysis but follow different rules.",
+    "quickRevision": [
+      "CFG: A -> alpha production rules",
+      "CNF: A->BC or A->a",
+      "GNF: production starts with a terminal",
+      "PDA = FA + stack",
+      "PDA recognizes exactly Context-Free Languages"
+    ]
+  },
+  {
+    "unitId": "u11",
+    "unitTitle": "Theory of Computation",
+    "topicName": "Turing Machines & Decidability",
+    "definition": "A Turing Machine (TM) is the most powerful classical model of computation, using an infinite tape for memory and a read/write head, capable of simulating any algorithm; decidability studies which problems CAN or CANNOT be solved algorithmically.",
+    "coreConcept": "The Turing Machine is considered equivalent to 'what is computable' by any modern computer (Church-Turing Thesis). A Recursive (decidable) language has a TM that always halts and correctly says yes/no; some problems, like the Halting Problem, are proven UNDECIDABLE - no algorithm can solve them for all cases.",
+    "importantPoints": [
+      "A Turing Machine has an infinite tape (memory), a read/write head, and a finite set of states/transition rules.",
+      "TM is more powerful than FA and PDA - it can simulate both, plus solve problems needing unrestricted memory access (like general computation).",
+      "A language is Recursive (Decidable) if there's a TM that halts on ALL inputs and correctly accepts/rejects.",
+      "A language is Recursively Enumerable if there's a TM that halts and accepts for YES inputs, but may run forever for NO inputs (never definitively rejects).",
+      "The Halting Problem asks: 'Given a program and input, will it eventually halt?' - Alan Turing proved NO general algorithm can answer this correctly for ALL possible programs/inputs (it is undecidable)."
+    ],
+    "example": "A TM designed to check if a number is prime will always halt and give a definite yes/no answer (decidable); but a TM designed to check if an arbitrary program will eventually terminate cannot be built in general - this is exactly the (undecidable) Halting Problem.",
+    "importantFacts": [
+      "The Church-Turing Thesis states that anything 'computable' by any reasonable notion of algorithm can be computed by a Turing Machine.",
+      "Undecidability doesn't mean 'hard to solve' - it means NO algorithm can EVER solve it correctly for all inputs, no matter how much time/resources are given."
+    ],
+    "commonConfusion": "Undecidable vs NP-Complete/NP-Hard: Undecidable problems have NO algorithm at all that solves them (like the Halting Problem); NP-Complete/Hard problems DO have algorithms, just no known EFFICIENT (polynomial-time) ones - these are very different concepts.",
+    "quickRevision": [
+      "Turing Machine: infinite tape, most powerful classical model",
+      "Recursive/Decidable: TM always halts with correct yes/no",
+      "Recursively Enumerable: TM may not halt on 'no' inputs",
+      "Halting Problem: proven undecidable by Turing"
+    ]
+  },
+  {
+    "unitId": "u12",
+    "unitTitle": "Internet of Things (IoT)",
+    "topicName": "IoT Architecture & Protocols",
+    "definition": "IoT (Internet of Things) architecture describes the layered structure connecting physical sensor devices to cloud-based processing and user applications; IoT protocols are the specific communication standards devices use to exchange data.",
+    "coreConcept": "A typical IoT architecture flows: Perception layer (sensors collect data) -> Network layer (data transmitted) -> Middleware/Processing layer (data processed/stored) -> Application layer (user-facing services). Different protocols are chosen based on power, range, and bandwidth needs.",
+    "importantPoints": [
+      "Perception (Sensing) Layer: physical sensors and actuators that collect real-world data (temperature, motion, RFID tags).",
+      "Network Layer: transmits sensed data to processing systems, using various wired/wireless protocols.",
+      "Middleware Layer: processes, stores, and manages the massive data generated by IoT devices, often using cloud computing.",
+      "Application Layer: delivers IoT services to end users (smart home apps, health monitoring dashboards).",
+      "Zigbee: low-power, low-data-rate wireless protocol suited for battery-operated sensor networks.",
+      "RFID: uses radio waves to identify and track tags attached to objects (used in inventory, access control).",
+      "Modbus: an industrial communication protocol commonly used to connect electronic devices in industrial IoT (IIoT) settings."
+    ],
+    "example": "A smart home temperature sensor (Perception layer) sends readings over Zigbee (Network layer) to a home hub, which uploads data to a cloud service (Middleware) that the homeowner views on a mobile app (Application layer).",
+    "importantFacts": [
+      "Cloud Computing provides the scalable storage and processing power needed to handle massive volumes of IoT sensor data.",
+      "Industrial IoT (IIoT) applies IoT concepts specifically to manufacturing/industrial settings, often with stricter reliability and real-time requirements."
+    ],
+    "commonConfusion": "Students sometimes think all IoT devices use Wi-Fi - in reality, many IoT protocols (Zigbee, Modbus, RFID) are specifically chosen because they use FAR LESS POWER than Wi-Fi, which matters for battery-powered sensors that must run for months or years.",
+    "quickRevision": [
+      "Layers: Perception -> Network -> Middleware -> Application",
+      "Zigbee: low-power wireless mesh",
+      "RFID: tag identification via radio waves",
+      "Modbus: industrial IoT communication protocol",
+      "Cloud computing supports IoT data storage/processing"
+    ]
+  },
+  {
+    "unitId": "u12",
+    "unitTitle": "Internet of Things (IoT)",
+    "topicName": "IoT Applications & Security",
+    "definition": "IoT applications span smart homes, healthcare, agriculture, and industry; IoT security addresses the unique challenges of protecting large numbers of often resource-constrained, always-connected devices from attacks.",
+    "coreConcept": "Because IoT devices are numerous, often low-power, and frequently deployed with default/weak security settings, they present a large attack surface; security strategies must balance protection with the devices' limited processing power and battery life.",
+    "importantPoints": [
+      "Mobile Computing complements IoT by allowing users to monitor/control IoT devices remotely via smartphones/tablets.",
+      "Common IoT security concerns: weak/default passwords, lack of regular firmware updates, unencrypted data transmission, and large-scale botnet risks (compromised IoT devices used for attacks).",
+      "Industrial IoT (IIoT) applies sensors/automation to manufacturing and industrial processes for monitoring, predictive maintenance, and efficiency.",
+      "Privacy concerns in IoT arise because sensors continuously collect potentially sensitive personal data (location, health metrics, habits)."
+    ],
+    "example": "A smart doorbell camera (IoT application) that uses a weak default password is a classic real-world example of an IoT security vulnerability, since attackers can access such devices at scale using known default credentials.",
+    "importantFacts": [
+      "Lightweight cryptography is often needed for IoT because full-scale encryption algorithms can be too resource-intensive for tiny, battery-powered sensor devices.",
+      "IoT devices are commonly targeted to build 'botnets' - networks of compromised devices used for large-scale attacks like DDoS."
+    ],
+    "commonConfusion": "IoT security is often confused with regular network/computer security - the key DIFFERENCE is that IoT devices typically have very LIMITED processing power/battery, so standard heavy security measures (like full encryption) may not be practical, requiring specially designed lightweight solutions.",
+    "quickRevision": [
+      "IoT applications: smart home, healthcare, agriculture, industry (IIoT)",
+      "Security risks: weak passwords, no updates, unencrypted data",
+      "IoT botnets: compromised devices used for attacks",
+      "Lightweight cryptography needed due to limited device resources"
+    ]
+  },
+  {
+    "unitId": "u13",
+    "unitTitle": "Artificial Intelligence",
+    "topicName": "Problem Solving & Search",
+    "definition": "AI problem-solving involves representing a problem as a search through a space of possible states, using search strategies to find a path from an initial state to a goal state.",
+    "coreConcept": "Uninformed (blind) search strategies like BFS and DFS explore the search space without any extra guidance; informed search strategies like Hill Climbing use heuristic information (an estimate of how close a state is to the goal) to guide the search more efficiently.",
+    "importantPoints": [
+      "BFS (Breadth-First Search): explores level by level using a queue; guarantees the shortest path (fewest steps) but can use a lot of memory.",
+      "DFS (Depth-First Search): explores as deep as possible along one path before backtracking, using a stack; uses less memory than BFS but doesn't guarantee the shortest path.",
+      "Hill Climbing: an informed, greedy local search that always moves to the neighbouring state with the best heuristic value; can get stuck at a 'local maximum' instead of finding the true best (global) solution.",
+      "A heuristic function estimates how close a given state is to the goal, guiding informed search algorithms toward promising directions."
+    ],
+    "example": "In the 8-puzzle problem (sliding tile puzzle), Hill Climbing would always choose the next move that appears to bring tiles closest to their goal positions, but might get stuck in a configuration where no single move improves things, even though a solution still exists (local maximum problem).",
+    "importantFacts": [
+      "BFS is 'complete' (will find a solution if one exists) and optimal for unweighted graphs; DFS is complete only for finite search spaces and is not guaranteed optimal.",
+      "A* search (a well-known informed algorithm, often referenced at this level) combines path cost so far with a heuristic estimate to the goal for more efficient, optimal search."
+    ],
+    "commonConfusion": "Students often think Hill Climbing always finds the best solution because it always improves - but it is a GREEDY, LOCAL method, so it can get permanently stuck at a local maximum, missing the actual best (global) solution elsewhere in the search space.",
+    "quickRevision": [
+      "BFS: queue, level-by-level, shortest path, more memory",
+      "DFS: stack/recursion, deep-first, less memory, not always shortest",
+      "Hill Climbing: greedy, heuristic-guided, risk of local maximum",
+      "Heuristic: estimate of distance/closeness to the goal"
+    ]
+  },
+  {
+    "unitId": "u13",
+    "unitTitle": "Artificial Intelligence",
+    "topicName": "Knowledge Representation & Inference",
+    "definition": "Knowledge Representation (KR) is how AI systems store and structure facts/knowledge about the world; Inference is the process of deriving new conclusions from that stored knowledge using logical reasoning.",
+    "coreConcept": "Common KR techniques include Predicate Logic (formal logical statements), Frames (structured templates for objects/concepts), and Rules (if-then statements). Inference engines apply Forward Chaining (data-driven, start from facts and derive conclusions) or Backward Chaining (goal-driven, start from a hypothesis and work backward to find supporting facts).",
+    "importantPoints": [
+      "Predicate Logic: extends simple true/false propositional logic with quantifiers (For All, There Exists) and predicates (relationships between objects), allowing more expressive knowledge representation.",
+      "Frames: structured data representations (like an object template) capturing an entity's typical attributes and default values, useful for representing stereotypical situations.",
+      "Production Rules (If-Then rules): 'IF condition THEN action/conclusion' - the foundation of rule-based Expert Systems.",
+      "Forward Chaining: starts with KNOWN FACTS and applies rules repeatedly to derive new facts/conclusions, moving 'forward' toward a goal.",
+      "Backward Chaining: starts with a GOAL/HYPOTHESIS and works backward, checking which rules/facts would need to be true to support that goal.",
+      "Bayesian Networks: represent probabilistic relationships between variables, useful for reasoning under uncertainty."
+    ],
+    "example": "A medical diagnosis expert system using Backward Chaining might start with the hypothesis 'Patient has flu' and then work backward, checking rules that require symptoms like fever and cough to confirm or reject that hypothesis.",
+    "importantFacts": [
+      "Forward chaining is data-driven (useful for monitoring/interpretation systems); Backward chaining is goal-driven (useful for diagnostic systems where you're testing a specific hypothesis).",
+      "Bayesian Networks use probability theory to handle uncertain/incomplete information, unlike purely rule-based systems."
+    ],
+    "commonConfusion": "Forward vs Backward Chaining: Forward Chaining starts from FACTS and moves toward possible conclusions (data->goal); Backward Chaining starts from a specific GOAL/hypothesis and checks backward what facts would need to be true (goal->data).",
+    "quickRevision": [
+      "Predicate logic: quantifiers+predicates, more expressive than propositional logic",
+      "Frames: template-based knowledge representation",
+      "Rules: IF-THEN, basis of expert systems",
+      "Forward chaining: facts->conclusions",
+      "Backward chaining: goal->supporting facts",
+      "Bayesian networks: probabilistic reasoning"
+    ]
+  },
+  {
+    "unitId": "u13",
+    "unitTitle": "Artificial Intelligence",
+    "topicName": "Machine Learning & Expert Systems",
+    "definition": "Machine Learning (ML) is a subfield of AI where systems learn patterns from data rather than being explicitly programmed with rules; an Expert System is an AI program that mimics the decision-making of a human expert in a specific domain, using a knowledge base and inference engine.",
+    "coreConcept": "ML is broadly divided into Supervised Learning (learning from labeled data), Unsupervised Learning (finding patterns in unlabeled data), and Reinforcement Learning (learning via trial-and-error with rewards/penalties). Expert Systems apply stored expert knowledge and inference rules to solve domain-specific problems.",
+    "importantPoints": [
+      "Supervised Learning: trains on labeled data (input-output pairs already known) - e.g., predicting house prices from past sales data with known prices.",
+      "Unsupervised Learning: works with UNLABELED data, finding hidden patterns/groupings (e.g., clustering customers by purchasing behaviour).",
+      "Reinforcement Learning: an agent learns by taking actions in an environment and receiving rewards or penalties, gradually improving its strategy.",
+      "Expert System components: Knowledge Base (domain facts/rules) + Inference Engine (applies logical reasoning) + User Interface.",
+      "Planning in AI involves determining a SEQUENCE of actions to achieve a specific goal from an initial state."
+    ],
+    "example": "An email spam filter trained on thousands of emails already labeled 'spam' or 'not spam' is a classic Supervised Learning application; a system that groups news articles into topics WITHOUT being told the topics beforehand is Unsupervised Learning.",
+    "importantFacts": [
+      "MYCIN and DENDRAL are classic historical examples of early Expert Systems (MYCIN for medical diagnosis, DENDRAL for chemical analysis).",
+      "Machine Learning is considered a core enabling technology behind many modern AI applications, including recommendation systems and image recognition."
+    ],
+    "commonConfusion": "Supervised vs Unsupervised Learning: the KEY difference is whether the training data has LABELS (known correct answers). Supervised = labeled data (learn to predict the label); Unsupervised = unlabeled data (discover hidden structure/groups on your own).",
+    "quickRevision": [
+      "Supervised: labeled data, learn input->output mapping",
+      "Unsupervised: unlabeled data, find hidden patterns/clusters",
+      "Reinforcement: learn via rewards/penalties from environment",
+      "Expert System = Knowledge Base + Inference Engine + UI"
+    ]
+  },
+  {
+    "unitId": "u14",
+    "unitTitle": "Fundamentals of E-Commerce",
+    "topicName": "E-Commerce Basics & Models",
+    "definition": "E-commerce refers to buying, selling, and exchanging goods/services or information over electronic networks (mainly the internet), and includes several business models based on WHO is transacting with WHOM.",
+    "coreConcept": "E-commerce models are classified by participant type: B2B (business-to-business), B2C (business-to-consumer), C2C (consumer-to-consumer), and others, each with different transaction dynamics and infrastructure needs.",
+    "importantPoints": [
+      "B2B (Business-to-Business): transactions between businesses, e.g., a manufacturer selling raw materials to another company - often high volume, negotiated pricing.",
+      "B2C (Business-to-Consumer): businesses selling directly to individual consumers, e.g., an online retail store.",
+      "C2C (Consumer-to-Consumer): individuals selling to other individuals, typically facilitated by a third-party platform (e.g., an online marketplace/auction site).",
+      "EDI (Electronic Data Interchange): standardized electronic exchange of business documents (purchase orders, invoices) between organizations' computer systems, common in B2B.",
+      "Digital Libraries and Corporate Data Warehouses support e-commerce by organizing large volumes of information/documents and business data for analysis."
+    ],
+    "example": "A wholesaler ordering laptop components from a manufacturer via an automated EDI system is B2B; a customer buying a laptop on an online retail website is B2C; a person selling their used laptop to another individual on an online marketplace is C2C.",
+    "importantFacts": [
+      "E-commerce infrastructure relies on the internet as a backbone, along with secure payment systems and network security measures.",
+      "Corporate Data Warehouses consolidate large volumes of business data (often from multiple systems) for analysis and decision-making."
+    ],
+    "commonConfusion": "B2B vs B2C: students should remember the SECOND letter tells you WHO the buyer is - B2B means the buyer is a Business; B2C means the buyer is a Consumer (individual end-user).",
+    "quickRevision": [
+      "B2B: business buys from business",
+      "B2C: consumer buys from business",
+      "C2C: consumer sells to consumer (via platform)",
+      "EDI: standardized electronic document exchange, common in B2B",
+      "Data warehouse: consolidated business data for analysis"
+    ]
+  },
+  {
+    "unitId": "u14",
+    "unitTitle": "Fundamentals of E-Commerce",
+    "topicName": "Security & Payment Systems",
+    "definition": "E-commerce security protects online transactions and data from unauthorized access/fraud; e-commerce payment systems are the various electronic methods used to transfer money for online purchases.",
+    "coreConcept": "Security relies on tools like firewalls (network-level protection) and digital signatures/encryption (data-level protection) to keep transactions safe. Payment systems range from traditional credit/debit cards to newer digital tokens and smart cards.",
+    "importantPoints": [
+      "Firewall: monitors and filters incoming/outgoing network traffic based on defined security rules, blocking unauthorized access while allowing legitimate traffic.",
+      "Digital Signature: uses cryptography to verify the authenticity (who sent it) and integrity (it wasn't altered) of a digital message/transaction.",
+      "Smart Cards: physical cards with an embedded microchip that can securely store and process payment/identity information.",
+      "Digital Tokens: represent value or access rights electronically, used as an alternative or supplement to traditional card-based payments.",
+      "Credit Card payment systems involve the buyer, seller, issuing bank, and a payment gateway/processor to authorize and complete transactions securely."
+    ],
+    "example": "When a customer submits payment on an e-commerce site, the transaction data is typically encrypted (e.g., via HTTPS/SSL) and processed through a payment gateway that verifies the card details with the issuing bank before completing the transaction.",
+    "importantFacts": [
+      "Network security in e-commerce also involves encryption protocols (like SSL/TLS) that protect data during transmission over the internet.",
+      "Digital signatures rely on public-key cryptography, using a private key to 'sign' and a public key for others to verify."
+    ],
+    "commonConfusion": "Firewall vs Digital Signature: a Firewall protects the NETWORK (controlling what traffic can enter/exit a system); a Digital Signature protects a specific MESSAGE/TRANSACTION's authenticity and integrity - they operate at different levels of the security stack.",
+    "quickRevision": [
+      "Firewall: network traffic filtering",
+      "Digital signature: verifies authenticity+integrity via cryptography",
+      "Smart card: chip-based secure payment/ID card",
+      "Digital token: electronic representation of value/access",
+      "Payment flow: buyer-seller-bank-gateway"
+    ]
+  },
+  {
+    "unitId": "u15",
+    "unitTitle": "Multimedia",
+    "topicName": "Multimedia Fundamentals",
+    "definition": "Multimedia refers to content that combines multiple forms of media - text, audio, images/graphics, animation, and video - delivered together through a computer system to communicate information in a richer way than a single medium.",
+    "coreConcept": "Multimedia systems require both HARDWARE (sound cards, graphics cards, storage, display devices) and SOFTWARE (authoring tools, media players, editing software) working together, and each media type (audio, video, graphics, animation) has its own standard formats and compression techniques.",
+    "importantPoints": [
+      "Audio formats: MP3 (popular lossy compressed audio format) and MIDI (Musical Instrument Digital Interface - stores musical instructions/notes rather than actual sound waveforms, resulting in very small file sizes).",
+      "Graphics: can be Raster/Bitmap (pixel-based, e.g., JPEG, PNG - can lose quality when scaled) or Vector (mathematical/formula-based, e.g., SVG - scales without quality loss).",
+      "Animation: creates the illusion of movement by rapidly displaying a sequence of still images/frames (frame-based animation).",
+      "Video: combines a sequence of images (frames) with synchronized audio, often compressed using codecs to reduce file size.",
+      "Multimedia project design involves planning content structure, choosing appropriate authoring tools, and considering the target hardware/platform."
+    ],
+    "example": "A ringtone stored as an MP3 file contains actual compressed audio waveform data (larger file), while the same tune stored as a MIDI file contains only instructions about which notes to play and when (much smaller file, but relies on the playback device's own sound synthesis).",
+    "importantFacts": [
+      "Lossy compression (like MP3, JPEG) reduces file size by discarding some data that's less perceptible to humans; Lossless compression preserves all original data exactly.",
+      "Multimedia authoring tools allow developers to combine various media types into an interactive presentation or application without needing to program everything from scratch."
+    ],
+    "commonConfusion": "MP3 vs MIDI: MP3 stores actual COMPRESSED SOUND data (like a recording); MIDI stores only INSTRUCTIONS (which notes, when, how loud) for a device to generate the sound itself - this is why MIDI files are so much smaller than MP3 files for the same tune.",
+    "quickRevision": [
+      "Multimedia: text+audio+graphics+animation+video combined",
+      "MP3: compressed audio recording",
+      "MIDI: musical instructions, not actual audio, very small size",
+      "Raster graphics: pixel-based; Vector graphics: formula-based, scalable",
+      "Animation: sequence of frames creates movement illusion"
+    ]
+  }
+]

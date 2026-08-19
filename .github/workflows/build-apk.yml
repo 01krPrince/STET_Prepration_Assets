@@ -1,0 +1,58 @@
+name: Build Bihar STET CS Prep APK
+
+# Runs entirely on GitHub's servers — nothing to install on your phone.
+# Trigger it manually from the Actions tab, or it runs automatically on
+# every push to main.
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'lib/**'
+      - 'assets/**'
+      - 'pubspec.yaml'
+      - '.github/workflows/build-apk.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java (required by Android Gradle build)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      # This project ships lib/, assets/, and pubspec.yaml by hand (it was
+      # built without a local Flutter SDK available). `flutter create` on an
+      # existing project directory only fills in MISSING platform folders
+      # (android/, .metadata, analysis_options.yaml, .gitignore) — it does
+      # NOT overwrite existing files like lib/main.dart or pubspec.yaml, so
+      # this is safe to run every time.
+      - name: Generate Android platform scaffolding
+        run: flutter create --platforms=android --project-name bihar_stet_cs_prep --org com.princekumar.stet .
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Static analysis (informational — does not fail the build)
+        run: flutter analyze || true
+
+      - name: Build release APK
+        run: flutter build apk --release
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
